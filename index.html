@@ -619,7 +619,7 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
       </div><!-- /fields-present -->
 
       <button type="button" class="btn-submit" onclick="submitRSVP()">Envoyer ma réponse</button>
-      <p class="rsvp-note">Merci de répondre avant le 31 janvier 2027</p>
+      <p class="rsvp-note">Merci de répondre avant le 14 février 2027</p>
     </div>
 
     <div class="rsvp-success" id="rsvp-success">
@@ -785,11 +785,68 @@ function supprimerEnfant(id){
 function submitRSVP(){
   var prenom=document.getElementById('f-prenom').value.trim();
   var nom=document.getElementById('f-nom').value.trim();
+  var email=document.getElementById('f-email').value.trim();
   if(!prenom||!nom||!presence){
     alert('Merci de remplir votre nom, prénom et votre présence.');return;
   }
-  document.getElementById('rsvp-form').style.display='none';
-  document.getElementById('rsvp-success').style.display='block';
+
+  /* Collecte conjoint */
+  var conjointData='';
+  if(conjoint==='oui'){
+    conjointData=[
+      'Prénom: '+(document.getElementById('c-prenom').value.trim()||'—'),
+      'Nom: '+(document.getElementById('c-nom').value.trim()||'—'),
+      'Régime: '+(document.getElementById('c-regime').value.trim()||'aucun'),
+      'Chambre: '+document.getElementById('c-chambre').value,
+      'Brunch: '+document.getElementById('c-brunch').value
+    ].join(' | ');
+  }
+
+  /* Collecte enfants */
+  var enfantsData=[];
+  for(var i=1;i<=nbEnfants;i++){
+    var eBloc=document.getElementById('enfant-'+i);
+    if(!eBloc) continue;
+    var ePrenom=(document.getElementById('e'+i+'-prenom')||{}).value||'';
+    var eAge=(document.getElementById('e'+i+'-age')||{}).value||'';
+    var eRegime=(document.getElementById('e'+i+'-regime')||{}).value||'aucun';
+    enfantsData.push('Enfant '+i+': '+ePrenom+' ('+eAge+' ans) — régime: '+eRegime);
+  }
+
+  var data={
+    prenom: prenom,
+    nom: nom,
+    email: email||'—',
+    telephone: document.getElementById('f-tel').value.trim()||'—',
+    presence: presence,
+    restrictions_alimentaires: document.getElementById('f-regime').value.trim()||'aucune',
+    conjoint: conjointData||'Non',
+    enfants: enfantsData.length ? enfantsData.join(' / ') : 'Aucun',
+    message: document.getElementById('f-message').value.trim()||'—'
+  };
+
+  var btn=document.querySelector('.btn-submit');
+  btn.textContent='Envoi en cours…';
+  btn.disabled=true;
+
+  fetch('https://formspree.io/f/meeddeob',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(data)
+  })
+  .then(function(res){
+    if(res.ok){
+      document.getElementById('rsvp-form').style.display='none';
+      document.getElementById('rsvp-success').style.display='block';
+    } else {
+      return res.json().then(function(d){throw new Error(d.error||'Erreur serveur');});
+    }
+  })
+  .catch(function(err){
+    alert('Une erreur est survenue lors de l\'envoi. Veuillez réessayer ou nous contacter directement.\n'+err.message);
+    btn.textContent='Envoyer ma réponse';
+    btn.disabled=false;
+  });
 }
 
 /* === QR CODE SITE === */
