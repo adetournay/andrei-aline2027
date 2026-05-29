@@ -102,10 +102,21 @@ section{padding:6rem 2rem}
 .maps-link{display:inline-flex;align-items:center;gap:.5rem;margin-top:1rem;padding:.55rem 1rem;background:transparent;border:1px solid rgba(201,168,76,.4);border-radius:2px;color:var(--or);font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;transition:all .3s}
 .maps-link:hover{background:rgba(201,168,76,.08);border-color:var(--or);transform:translateY(-1px)}
 #galerie{background:var(--ivoire-dark)}
-.galerie-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
-@media(max-width:500px){.galerie-grid{grid-template-columns:1fr 1fr}}
-.galerie-item{aspect-ratio:3/4;background:linear-gradient(135deg,var(--ivoire),rgba(201,168,76,.1));border:1px solid rgba(201,168,76,.25);border-radius:2px;display:flex;align-items:center;justify-content:center;color:var(--or);opacity:.6;font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;text-align:center;padding:.5rem;overflow:hidden}
-.galerie-item:nth-child(2){aspect-ratio:3/5}
+.mosaic-grid{columns:3;column-gap:.7rem;margin-top:1.5rem}
+@media(max-width:700px){.mosaic-grid{columns:2}}
+@media(max-width:400px){.mosaic-grid{columns:1}}
+.mosaic-item{break-inside:avoid;margin-bottom:.7rem;overflow:hidden;border-radius:2px;cursor:pointer;position:relative}
+.mosaic-item img{width:100%;display:block;border-radius:2px;transition:transform .4s,filter .3s;filter:brightness(.97)}
+.mosaic-item:hover img{transform:scale(1.03);filter:brightness(1.04)}
+/* Lightbox */
+#lightbox{display:none;position:fixed;inset:0;z-index:500;background:rgba(26,10,15,.92);align-items:center;justify-content:center;flex-direction:column}
+#lightbox.open{display:flex}
+#lightbox img{max-width:90vw;max-height:82vh;border-radius:2px;box-shadow:0 8px 60px rgba(0,0,0,.6);object-fit:contain}
+#lb-close{position:absolute;top:1.2rem;right:1.5rem;background:transparent;border:none;color:var(--or-light);font-size:2rem;cursor:pointer;line-height:1}
+#lb-prev,#lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(107,30,46,.5);border:1px solid rgba(201,168,76,.3);color:var(--or-light);font-size:1.6rem;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+#lb-prev{left:1rem}#lb-next{right:1rem}
+#lb-prev:hover,#lb-next:hover{background:rgba(107,30,46,.85)}
+#lb-counter{position:absolute;bottom:1.2rem;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;color:rgba(250,246,238,.5)}
 .galerie-img{width:100%;height:100%;object-fit:cover;border-radius:2px;display:block}
 .galerie-note{text-align:center;margin-top:1.5rem;font-style:italic;font-size:.9rem;color:var(--texte-muted)}
 
@@ -288,8 +299,9 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
     <p class="histoire-text reveal">Puis le hasard — ce grand urgentiste des âmes — a bien voulu les rapprocher à nouveau. Les conversations ont repris, plus longues, plus profondes. Les sourires se sont attardés. Et quelque chose de doux, d'irrésistible, a commencé à prendre forme — comme un pouls qui s'emballe doucement, régulièrement, sans qu'on puisse rien y faire.</p>
     <p class="histoire-text reveal">Leurs premiers rendez-vous ont été marqués par la magie singulière de la Butte du Lion de Waterloo, ce lieu où l'histoire a basculé — et où la leur a vraiment commencé. Entre ces deux âmes que tout semblait avoir réunies, les mots sont devenus confidences, les silences complicité, et l'attachement, quelque chose d'irréversible.</p>
     <p class="histoire-text reveal">Depuis, leur vie à deux n'a cessé de s'écrire en grand. Il y a eu l'Île de la Réunion, peut-être le chapitre le plus envoûtant de leur histoire — ces longs mois suspendus entre deux océans, bercés par les volcans, les cirques vertigineux et l'air chaud du bout du monde. Une parenthèse hors du temps qui les a soudés comme seule l'aventure partagée sait le faire, loin de tout, proches de l'essentiel.</p>
-    <p class="histoire-text reveal">Et puis le monde entier, exploré main dans la main — l'Angleterre brumeuse, la France lumineuse, le Maroc envoûtant, les États-Unis immenses. Chaque pays traversé, une nouvelle couche de leur histoire. Chaque départ, une façon de mieux revenir l'un vers l'autre.</p>
+    <p class="histoire-text reveal">Et puis le monde entier, exploré main dans la main — l'Angleterre brumeuse, la France lumineuse, le Maroc envoûtant, les États-Unis immenses, Lisbonne ensoleillée, la Corse sauvage et parfumée. Chaque pays traversé, une nouvelle couche de leur histoire. Chaque départ, une façon de mieux revenir l'un vers l'autre.</p>
     <p class="histoire-text reveal">Autour d'eux, une famille extraordinaire et des amis d'une valeur inestimable. Et leurs témoins — qu'ils aiment et chérissent plus que les mots ne sauraient le dire — sans qui rien de tout cela ne serait pareil. Ils savent ce qu'ils leur doivent, et ils les en remercient du fond du cœur.</p>
+    <p class="histoire-text reveal">Entre-temps, leur foyer s'était déjà enrichi d'une présence toute particulière : Freyja, leur chienne, qui a débarqué dans leur vie avec ses grands yeux doux et une énergie débordante. Elle a apporté avec elle une joie quotidienne, des fous rires, une tendresse inconditionnelle — et cette façon bien à elle de rappeler que le bonheur se trouve aussi dans les petits matins partagés, la laisse à la main et le cœur léger.</p>
     <p class="histoire-text reveal">Et puis, le 12 janvier 2026, leur bonheur a pris un prénom : Aliénor. Leur petite fille, leur plus belle urgence, celle qui a tout bousculé dans le meilleur sens du monde — et qui les comble, chaque jour, d'une joie nouvelle.</p>
     <p class="histoire-text reveal">C'est forts de tout cela — de ces années tissées ensemble, de ces kilomètres parcourus main dans la main, de cette île qui les a transformés, de cette famille construite avec amour et patience — qu'Andrei et Aline franchissent aujourd'hui le plus beau des seuils.</p>
     <p class="histoire-text reveal" style="text-align:center;font-style:italic;margin-top:2rem">Le diagnostic est posé, l'ordonnance est claire : une vie entière, ensemble.</p>
@@ -416,15 +428,89 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.7C5.4 13.6 2 9 2 6a10 10 0 0 1 20 0c0 3-3.4 7.6-10 15.7z"/></svg>
       <div class="divider-line r"></div>
     </div>
-    <div class="galerie-grid reveal">
-      <div class="galerie-item">Vos photos<br>à venir</div>
-      <div class="galerie-item">Fiançailles<br>& moments<br>précieux</div>
-      <div class="galerie-item">Vos photos<br>à venir</div>
-      <div class="galerie-item">Vos photos<br>à venir</div>
-      <div class="galerie-item" style="aspect-ratio:3/4">Vos photos<br>à venir</div>
-      <div class="galerie-item">Vos photos<br>à venir</div>
+    <div class="mosaic-grid reveal">
+      <div class="mosaic-item" onclick="openLightbox(0)"><img src="Photos%20/183059dd-7811-4625-842a-0bd2e8c73d85.JPG" alt="Photo 1" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(1)"><img src="Photos%20/1889d703-1983-4a82-b901-dc25a8ef15c6.jpg" alt="Photo 2" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(2)"><img src="Photos%20/2669eb19-1739-4651-b03b-a3525eae01df.jpg" alt="Photo 3" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(3)"><img src="Photos%20/40e62191-5a42-4ccf-808e-47a89c749129.JPG" alt="Photo 4" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(4)"><img src="Photos%20/519b6baa-c1a5-4eff-91ec-9fe394b410e1.jpg" alt="Photo 5" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(5)"><img src="Photos%20/804ab517-5dcb-4906-abab-5e169694a7d6.JPG" alt="Photo 6" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(6)"><img src="Photos%20/8CA47556-D139-4BA1-BFDE-06ED4F32DD71.JPG" alt="Photo 7" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(7)"><img src="Photos%20/8dfe871a-5c0d-46f6-96e1-476a5b8a7afa.JPG" alt="Photo 8" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(8)"><img src="Photos%20/GPTempDownload%202.JPG" alt="Photo 9" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(9)"><img src="Photos%20/GPTempDownload.JPG" alt="Photo 10" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(10)"><img src="Photos%20/IMG_0456.jpg" alt="Photo 11" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(11)"><img src="Photos%20/IMG_0459.jpg" alt="Photo 12" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(12)"><img src="Photos%20/IMG_0548.jpg" alt="Photo 13" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(13)"><img src="Photos%20/IMG_0629.jpg" alt="Photo 14" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(14)"><img src="Photos%20/IMG_0640.jpg" alt="Photo 15" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(15)"><img src="Photos%20/IMG_0642.jpg" alt="Photo 16" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(16)"><img src="Photos%20/IMG_0657.jpg" alt="Photo 17" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(17)"><img src="Photos%20/IMG_0844.jpg" alt="Photo 18" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(18)"><img src="Photos%20/IMG_1011.jpg" alt="Photo 19" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(19)"><img src="Photos%20/IMG_1237.jpg" alt="Photo 20" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(20)"><img src="Photos%20/IMG_1285.jpg" alt="Photo 21" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(21)"><img src="Photos%20/IMG_1401.jpg" alt="Photo 22" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(22)"><img src="Photos%20/IMG_1409.jpg" alt="Photo 23" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(23)"><img src="Photos%20/IMG_1414.jpg" alt="Photo 24" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(24)"><img src="Photos%20/IMG_1480.jpg" alt="Photo 25" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(25)"><img src="Photos%20/IMG_1642.jpg" alt="Photo 26" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(26)"><img src="Photos%20/IMG_1662.jpg" alt="Photo 27" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(27)"><img src="Photos%20/IMG_1904.jpg" alt="Photo 28" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(28)"><img src="Photos%20/IMG_2351.jpg" alt="Photo 29" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(29)"><img src="Photos%20/IMG_2445.jpg" alt="Photo 30" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(30)"><img src="Photos%20/IMG_2525.jpg" alt="Photo 31" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(31)"><img src="Photos%20/IMG_2840.jpg" alt="Photo 32" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(32)"><img src="Photos%20/IMG_2850.jpg" alt="Photo 33" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(33)"><img src="Photos%20/IMG_3308.jpg" alt="Photo 34" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(34)"><img src="Photos%20/IMG_3380.jpg" alt="Photo 35" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(35)"><img src="Photos%20/IMG_3404.jpg" alt="Photo 36" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(36)"><img src="Photos%20/IMG_3463.jpg" alt="Photo 37" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(37)"><img src="Photos%20/IMG_3534.JPG" alt="Photo 38" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(38)"><img src="Photos%20/IMG_3743.jpg" alt="Photo 39" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(39)"><img src="Photos%20/IMG_3965.jpg" alt="Photo 40" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(40)"><img src="Photos%20/IMG_4006.jpg" alt="Photo 41" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(41)"><img src="Photos%20/IMG_4092.jpg" alt="Photo 42" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(42)"><img src="Photos%20/IMG_4283.JPG" alt="Photo 43" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(43)"><img src="Photos%20/IMG_4489.JPG" alt="Photo 44" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(44)"><img src="Photos%20/IMG_4505.jpg" alt="Photo 45" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(45)"><img src="Photos%20/IMG_4584.jpg" alt="Photo 46" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(46)"><img src="Photos%20/IMG_4602.jpg" alt="Photo 47" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(47)"><img src="Photos%20/IMG_4627.jpg" alt="Photo 48" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(48)"><img src="Photos%20/IMG_4733.jpg" alt="Photo 49" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(49)"><img src="Photos%20/IMG_5330.jpg" alt="Photo 50" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(50)"><img src="Photos%20/IMG_5331.jpg" alt="Photo 51" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(51)"><img src="Photos%20/IMG_5715.jpg" alt="Photo 52" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(52)"><img src="Photos%20/IMG_5737.jpg" alt="Photo 53" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(53)"><img src="Photos%20/IMG_5825.jpg" alt="Photo 54" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(54)"><img src="Photos%20/IMG_5887.jpg" alt="Photo 55" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(55)"><img src="Photos%20/IMG_5993.jpg" alt="Photo 56" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(56)"><img src="Photos%20/IMG_6090.jpg" alt="Photo 57" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(57)"><img src="Photos%20/IMG_6106.jpg" alt="Photo 58" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(58)"><img src="Photos%20/IMG_6179.jpg" alt="Photo 59" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(59)"><img src="Photos%20/IMG_6314.jpg" alt="Photo 60" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(60)"><img src="Photos%20/IMG_6957.jpg" alt="Photo 61" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(61)"><img src="Photos%20/IMG_7376.jpg" alt="Photo 62" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(62)"><img src="Photos%20/IMG_7377.jpg" alt="Photo 63" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(63)"><img src="Photos%20/IMG_7382.jpg" alt="Photo 64" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(64)"><img src="Photos%20/IMG_7538.jpg" alt="Photo 65" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(65)"><img src="Photos%20/IMG_7582.jpg" alt="Photo 66" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(66)"><img src="Photos%20/IMG_7605.jpg" alt="Photo 67" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(67)"><img src="Photos%20/IMG_7672.jpg" alt="Photo 68" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(68)"><img src="Photos%20/IMG_7711.jpg" alt="Photo 69" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(69)"><img src="Photos%20/IMG_8046.jpg" alt="Photo 70" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(70)"><img src="Photos%20/IMG_8140.jpg" alt="Photo 71" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(71)"><img src="Photos%20/IMG_8156.jpg" alt="Photo 72" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(72)"><img src="Photos%20/IMG_8199.jpg" alt="Photo 73" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(73)"><img src="Photos%20/IMG_8203.jpg" alt="Photo 74" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(74)"><img src="Photos%20/IMG_8374.JPG" alt="Photo 75" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(75)"><img src="Photos%20/IMG_8460.jpg" alt="Photo 76" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(76)"><img src="Photos%20/IMG_9111.jpg" alt="Photo 77" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(77)"><img src="Photos%20/IMG_9283.jpg" alt="Photo 78" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(78)"><img src="Photos%20/b91016bc-3823-4d58-9d4c-de25c0da90b2.JPG" alt="Photo 79" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(79)"><img src="Photos%20/c4c7dfd2-b8e2-45c1-bc26-eed181937c97.jpg" alt="Photo 80" loading="lazy"></div>
+      <div class="mosaic-item" onclick="openLightbox(80)"><img src="Photos%20/d3f59a32-076a-4473-a0f9-2be1f21bd6f4.JPG" alt="Photo 81" loading="lazy"></div>
     </div>
-    <p class="galerie-note reveal">Les photos seront ajoutées au fil du temps ✦</p>
   </div>
 </section>
 
@@ -598,6 +684,15 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
   <div class="footer-address">Rue Omer Lion, 7181 Seneffe · Belgique</div>
 </footer>
 
+<!-- Lightbox -->
+<div id="lightbox" onclick="closeLightboxOutside(event)">
+  <button id="lb-close" onclick="closeLightbox()">×</button>
+  <button id="lb-prev" onclick="lbNav(-1)">‹</button>
+  <img id="lb-img" src="" alt="">
+  <button id="lb-next" onclick="lbNav(1)">›</button>
+  <span id="lb-counter"></span>
+</div>
+
 <!-- Lecteur YouTube caché -->
 <div id="yt-player"></div>
 
@@ -741,6 +836,37 @@ function copyIban(){
     setTimeout(function(){lbl.textContent='Copier l\'IBAN';},2000);
   });
 }
+</script>
+
+<!-- Lightbox JS -->
+<script>
+var lbPhotos = ["Photos%20/183059dd-7811-4625-842a-0bd2e8c73d85.JPG","Photos%20/1889d703-1983-4a82-b901-dc25a8ef15c6.jpg","Photos%20/2669eb19-1739-4651-b03b-a3525eae01df.jpg","Photos%20/40e62191-5a42-4ccf-808e-47a89c749129.JPG","Photos%20/519b6baa-c1a5-4eff-91ec-9fe394b410e1.jpg","Photos%20/804ab517-5dcb-4906-abab-5e169694a7d6.JPG","Photos%20/8CA47556-D139-4BA1-BFDE-06ED4F32DD71.JPG","Photos%20/8dfe871a-5c0d-46f6-96e1-476a5b8a7afa.JPG","Photos%20/GPTempDownload%202.JPG","Photos%20/GPTempDownload.JPG","Photos%20/IMG_0456.jpg","Photos%20/IMG_0459.jpg","Photos%20/IMG_0548.jpg","Photos%20/IMG_0629.jpg","Photos%20/IMG_0640.jpg","Photos%20/IMG_0642.jpg","Photos%20/IMG_0657.jpg","Photos%20/IMG_0844.jpg","Photos%20/IMG_1011.jpg","Photos%20/IMG_1237.jpg","Photos%20/IMG_1285.jpg","Photos%20/IMG_1401.jpg","Photos%20/IMG_1409.jpg","Photos%20/IMG_1414.jpg","Photos%20/IMG_1480.jpg","Photos%20/IMG_1642.jpg","Photos%20/IMG_1662.jpg","Photos%20/IMG_1904.jpg","Photos%20/IMG_2351.jpg","Photos%20/IMG_2445.jpg","Photos%20/IMG_2525.jpg","Photos%20/IMG_2840.jpg","Photos%20/IMG_2850.jpg","Photos%20/IMG_3308.jpg","Photos%20/IMG_3380.jpg","Photos%20/IMG_3404.jpg","Photos%20/IMG_3463.jpg","Photos%20/IMG_3534.JPG","Photos%20/IMG_3743.jpg","Photos%20/IMG_3965.jpg","Photos%20/IMG_4006.jpg","Photos%20/IMG_4092.jpg","Photos%20/IMG_4283.JPG","Photos%20/IMG_4489.JPG","Photos%20/IMG_4505.jpg","Photos%20/IMG_4584.jpg","Photos%20/IMG_4602.jpg","Photos%20/IMG_4627.jpg","Photos%20/IMG_4733.jpg","Photos%20/IMG_5330.jpg","Photos%20/IMG_5331.jpg","Photos%20/IMG_5715.jpg","Photos%20/IMG_5737.jpg","Photos%20/IMG_5825.jpg","Photos%20/IMG_5887.jpg","Photos%20/IMG_5993.jpg","Photos%20/IMG_6090.jpg","Photos%20/IMG_6106.jpg","Photos%20/IMG_6179.jpg","Photos%20/IMG_6314.jpg","Photos%20/IMG_6957.jpg","Photos%20/IMG_7376.jpg","Photos%20/IMG_7377.jpg","Photos%20/IMG_7382.jpg","Photos%20/IMG_7538.jpg","Photos%20/IMG_7582.jpg","Photos%20/IMG_7605.jpg","Photos%20/IMG_7672.jpg","Photos%20/IMG_7711.jpg","Photos%20/IMG_8046.jpg","Photos%20/IMG_8140.jpg","Photos%20/IMG_8156.jpg","Photos%20/IMG_8199.jpg","Photos%20/IMG_8203.jpg","Photos%20/IMG_8374.JPG","Photos%20/IMG_8460.jpg","Photos%20/IMG_9111.jpg","Photos%20/IMG_9283.jpg","Photos%20/b91016bc-3823-4d58-9d4c-de25c0da90b2.JPG","Photos%20/c4c7dfd2-b8e2-45c1-bc26-eed181937c97.jpg","Photos%20/d3f59a32-076a-4473-a0f9-2be1f21bd6f4.JPG"];
+var lbIndex = 0;
+function openLightbox(i){
+  lbIndex = i;
+  document.getElementById('lb-img').src = lbPhotos[i];
+  document.getElementById('lb-counter').textContent = (i+1) + ' / ' + lbPhotos.length;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeLightboxOutside(e){
+  if(e.target === document.getElementById('lightbox')) closeLightbox();
+}
+function lbNav(dir){
+  lbIndex = (lbIndex + dir + lbPhotos.length) % lbPhotos.length;
+  document.getElementById('lb-img').src = lbPhotos[lbIndex];
+  document.getElementById('lb-counter').textContent = (lbIndex+1) + ' / ' + lbPhotos.length;
+}
+document.addEventListener('keydown', function(e){
+  if(!document.getElementById('lightbox').classList.contains('open')) return;
+  if(e.key === 'ArrowRight') lbNav(1);
+  if(e.key === 'ArrowLeft') lbNav(-1);
+  if(e.key === 'Escape') closeLightbox();
+});
 </script>
 
 <!-- YouTube IFrame API -->
