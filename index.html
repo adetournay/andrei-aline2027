@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrei & Aline · 17 Avril 2027</title>
+<meta name="description" content="Andrei et Aline vous invitent à célébrer leur mariage le 17 avril 2027 au Château de la Rocq, Seneffe, Belgique.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bordeaux:#6B1E2E;--bordeaux-deep:#4A1220;--bordeaux-light:#8C3347;
+  --or:#C9A84C;--or-light:#E2C87A;--ivoire:#FAF6EE;--ivoire-dark:#F0E8D6;
+  --texte:#2A1A1F;--texte-muted:#7A5A62;
+}
+html{scroll-behavior:smooth}
+body{background:var(--ivoire);color:var(--texte);font-family:'EB Garamond',serif;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,246,238,.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(201,168,76,.25);padding:0 2rem}
+.nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:58px}
+.nav-logo{font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:.2em;color:var(--bordeaux)}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--texte-muted);text-decoration:none;transition:color .3s}
+.nav-links a:hover{color:var(--or)}
+@media(max-width:600px){.nav-links{gap:1rem}.nav-links a{font-size:.55rem;letter-spacing:.1em}}
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;padding:5rem 2rem 3rem;overflow:hidden;background:var(--bordeaux-deep)}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(201,168,76,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 20% 100%,rgba(201,168,76,.08) 0%,transparent 50%),var(--bordeaux-deep)}
+.hero-pattern{position:absolute;inset:0;opacity:.06;background-image:repeating-linear-gradient(45deg,var(--or) 0,var(--or) 1px,transparent 0,transparent 50%);background-size:18px 18px}
+.hero-content{position:relative;z-index:2;text-align:center;animation:fadeUp .9s ease both}
+.hero-eyebrow{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;color:var(--or-light);margin-bottom:1.8rem}
+.hero-ampersand{font-family:'Cormorant Garamond',serif;font-size:clamp(5rem,14vw,11rem);font-weight:300;font-style:italic;color:var(--or);line-height:.85;opacity:.15;position:absolute;left:50%;transform:translateX(-50%) translateY(-30%);pointer-events:none;user-select:none}
+.hero-names{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,10vw,8rem);font-weight:300;color:var(--ivoire);line-height:1;letter-spacing:.04em}
+.hero-names em{font-style:italic;color:var(--or-light)}
+.hero-sep{display:flex;align-items:center;gap:1rem;margin:1.6rem auto;width:fit-content}
+.hero-line{width:60px;height:1px;background:var(--or);opacity:.5}
+.hero-date{font-family:'Cinzel',serif;font-size:.9rem;letter-spacing:.25em;color:var(--or-light);text-transform:uppercase}
+.hero-location{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:rgba(250,246,238,.7);margin-top:.5rem}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:pulse 2s ease-in-out infinite}
+.hero-scroll span{font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.3em;color:var(--or);opacity:.6;text-transform:uppercase}
+.countdown{display:flex;gap:2.5rem;margin-top:2.5rem;justify-content:center;flex-wrap:wrap}
+.cdown-item{text-align:center}
+.cdown-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--or-light);line-height:1}
+.cdown-label{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(250,246,238,.45);margin-top:.25rem}
+section{padding:6rem 2rem}
+.section-inner{max-width:860px;margin:0 auto}
+.section-tag{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--or);text-align:center;margin-bottom:.8rem}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:300;text-align:center;color:var(--bordeaux);margin-bottom:.5rem}
+.section-title em{font-style:italic}
+.divider{display:flex;align-items:center;justify-content:center;gap:1rem;margin:1.5rem auto 3rem}
+.divider-line{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--or))}
+.divider-line.r{background:linear-gradient(90deg,var(--or),transparent)}
+.divider svg{color:var(--or);flex-shrink:0}
+#citation{background:var(--bordeaux-deep);padding:5rem 2rem}
+.citation-inner{max-width:720px;margin:0 auto;text-align:center;position:relative}
+.citation-mark{font-family:'Cormorant Garamond',serif;font-size:8rem;line-height:.6;color:var(--or);opacity:.18;position:absolute;top:0;left:0;user-select:none}
+.citation-mark.close{left:auto;right:0;top:auto;bottom:-.5rem}
+.citation-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.3rem,3.2vw,1.95rem);font-weight:300;color:var(--ivoire);line-height:1.7;padding:0 2.5rem}
+.citation-author{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--or);margin-top:2rem;opacity:.8}
+.citation-ornament{display:flex;align-items:center;justify-content:center;gap:1rem;margin:1.5rem auto 0}
+.citation-ornament-line{width:50px;height:1px;background:rgba(201,168,76,.3)}
+#dedicace{background:var(--ivoire);padding:5rem 2rem}
+.dedicace-inner{max-width:680px;margin:0 auto;text-align:center}
+.dedicace-ornement{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-bottom:2.5rem}
+.dedicace-ornement-line{flex:1;max-width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--or))}
+.dedicace-ornement-line.r{background:linear-gradient(90deg,var(--or),transparent)}
+.dedicace-intro{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--or);margin-bottom:1.8rem;opacity:.8}
+.dedicace-texte{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.5vw,1.45rem);line-height:1.95;color:var(--texte);font-weight:300}
+.dedicace-texte em{font-style:italic;color:var(--bordeaux)}
+.dedicace-signature{margin-top:2.5rem;display:flex;flex-direction:column;align-items:center;gap:.4rem}
+.dedicace-signature-names{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.6rem;color:var(--bordeaux);font-weight:300}
+.dedicace-signature-line{width:40px;height:1px;background:var(--or);opacity:.5}
+#histoire{background:var(--ivoire-dark)}
+.histoire-text{font-size:1.18rem;line-height:1.9;color:var(--texte);text-align:center;max-width:640px;margin:0 auto;font-style:italic;opacity:.85}
+#programme{background:var(--bordeaux-deep);color:var(--ivoire)}
+#programme .section-title{color:var(--or-light)}
+#programme .section-tag{color:var(--or)}
+#programme .divider-line{background:linear-gradient(90deg,transparent,var(--or-light))}
+#programme .divider-line.r{background:linear-gradient(90deg,var(--or-light),transparent)}
+#programme .divider svg{color:var(--or)}
+.timeline{position:relative;padding-left:2rem;max-width:580px;margin:0 auto}
+.timeline::before{content:'';position:absolute;left:0;top:.5rem;bottom:.5rem;width:1px;background:linear-gradient(180deg,transparent,var(--or) 10%,var(--or) 90%,transparent)}
+.tl-item{position:relative;padding:0 0 2.4rem 2.5rem}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{position:absolute;left:-5px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--or);border:2px solid var(--bordeaux-deep);box-shadow:0 0 0 3px rgba(201,168,76,.2)}
+.tl-dot.small{width:8px;height:8px;left:-4px;background:rgba(201,168,76,.4)}
+.tl-time{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.2em;color:var(--or);text-transform:uppercase;margin-bottom:.3rem}
+.tl-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--ivoire);margin-bottom:.2rem}
+.tl-desc{font-size:.95rem;color:rgba(250,246,238,.55);line-height:1.6;font-style:italic}
+.tl-badge{display:inline-block;margin-left:.6rem;font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);color:var(--or);padding:.15rem .5rem;border-radius:2px;vertical-align:middle}
+#infos{background:var(--ivoire)}
+.infos-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1rem}
+@media(max-width:620px){.infos-grid{grid-template-columns:1fr}}
+.info-card{background:var(--ivoire-dark);border:1px solid rgba(201,168,76,.3);border-radius:2px;padding:1.8rem;position:relative;overflow:hidden}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--bordeaux),var(--or))}
+.info-card.full{grid-column:1/-1}
+.info-card-icon{font-size:1.5rem;margin-bottom:.7rem}
+.info-card-title{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bordeaux);margin-bottom:.7rem}
+.info-card-text{font-size:1rem;line-height:1.75;color:var(--texte-muted)}
+.info-card-text strong{color:var(--texte);font-weight:500}
+.info-card-text ul{margin:.4rem 0 0 0;list-style:none;padding:0}
+.info-card-text ul li{padding:.15rem 0}
+.info-card-text ul li::before{content:'✦';color:var(--or);font-size:.6rem;margin-right:.5rem;vertical-align:middle}
+.maps-link{display:inline-flex;align-items:center;gap:.5rem;margin-top:1rem;padding:.55rem 1rem;background:transparent;border:1px solid rgba(201,168,76,.4);border-radius:2px;color:var(--or);font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.maps-link:hover{background:rgba(201,168,76,.08);border-color:var(--or);transform:translateY(-1px)}
+#galerie{background:var(--ivoire-dark)}
+.galerie-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+@media(max-width:500px){.galerie-grid{grid-template-columns:1fr 1fr}}
+.galerie-item{aspect-ratio:3/4;background:linear-gradient(135deg,var(--ivoire),rgba(201,168,76,.1));border:1px solid rgba(201,168,76,.25);border-radius:2px;display:flex;align-items:center;justify-content:center;color:var(--or);opacity:.6;font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;text-align:center;padding:.5rem;overflow:hidden}
+.galerie-item:nth-child(2){aspect-ratio:3/5}
+.galerie-img{width:100%;height:100%;object-fit:cover;border-radius:2px;display:block}
+.galerie-note{text-align:center;margin-top:1.5rem;font-style:italic;font-size:.9rem;color:var(--texte-muted)}
+
+/* ======= RSVP ======= */
+#rsvp{background:var(--bordeaux-deep)}
+#rsvp .section-title{color:var(--or-light)}
+#rsvp .section-tag{color:var(--or)}
+#rsvp .divider-line{background:linear-gradient(90deg,transparent,rgba(201,168,76,.5))}
+#rsvp .divider-line.r{background:linear-gradient(90deg,rgba(201,168,76,.5),transparent)}
+#rsvp .divider svg{color:var(--or)}
+.rsvp-form{max-width:580px;margin:0 auto;display:flex;flex-direction:column;gap:1.2rem}
+.rsvp-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:500px){.rsvp-row{grid-template-columns:1fr}}
+.field-group{display:flex;flex-direction:column;gap:.4rem}
+.field-group label{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);opacity:.8}
+.field-group input,.field-group select,.field-group textarea{background:rgba(250,246,238,.06);border:1px solid rgba(201,168,76,.25);border-radius:2px;padding:.75rem 1rem;color:var(--ivoire);font-family:'EB Garamond',serif;font-size:1rem;outline:none;transition:border-color .3s}
+.field-group input::placeholder,.field-group textarea::placeholder{color:rgba(250,246,238,.3)}
+.field-group input:focus,.field-group select:focus,.field-group textarea:focus{border-color:var(--or)}
+.field-group select{appearance:none;cursor:pointer}
+.field-group select option{background:var(--bordeaux-deep);color:var(--ivoire)}
+.rsvp-presence{display:flex;gap:1rem;flex-wrap:wrap}
+.presence-btn{flex:1;min-width:120px;padding:.7rem 1rem;border:1px solid rgba(201,168,76,.3);background:transparent;color:rgba(250,246,238,.6);font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .3s}
+.presence-btn.active,.presence-btn:hover{background:rgba(201,168,76,.15);border-color:var(--or);color:var(--or-light)}
+
+/* Bloc accompagnant */
+.accompagnant-bloc{border:1px solid rgba(201,168,76,.2);border-radius:2px;padding:1.2rem 1.2rem .8rem;display:flex;flex-direction:column;gap:.9rem;position:relative;background:rgba(250,246,238,.03)}
+.accompagnant-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.3rem}
+.accompagnant-label{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or-light);opacity:.7}
+.accompagnant-remove{background:transparent;border:none;color:rgba(250,246,238,.3);cursor:pointer;font-size:1.1rem;line-height:1;padding:.1rem .3rem;transition:color .2s}
+.accompagnant-remove:hover{color:rgba(250,246,238,.7)}
+.add-accompagnant-btn{display:flex;align-items:center;justify-content:center;gap:.6rem;padding:.7rem 1rem;border:1px dashed rgba(201,168,76,.3);background:transparent;color:rgba(201,168,76,.6);font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .3s;width:100%}
+.add-accompagnant-btn:hover{border-color:var(--or);color:var(--or);background:rgba(201,168,76,.05)}
+.rsvp-section-title{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--or);opacity:.6;padding:.8rem 0 .3rem;border-top:1px solid rgba(201,168,76,.15);margin-top:.3rem}
+
+.btn-submit{margin-top:.5rem;padding:1rem 2rem;background:linear-gradient(135deg,var(--bordeaux),var(--bordeaux-light));border:none;border-radius:2px;color:var(--ivoire);font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.btn-submit::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.2),transparent);opacity:0;transition:opacity .3s}
+.btn-submit:hover::after{opacity:1}
+.btn-submit:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(107,30,46,.4)}
+.rsvp-note{font-size:.9rem;font-style:italic;color:rgba(250,246,238,.4);text-align:center;margin-top:.5rem}
+.rsvp-success{display:none;text-align:center;padding:3rem 1rem}
+.rsvp-success p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--ivoire);opacity:.8}
+
+#qr-section{background:var(--ivoire);padding:5rem 2rem}
+.qr-inner{max-width:500px;margin:0 auto;text-align:center}
+.qr-frame{display:inline-block;padding:1.2rem;background:var(--ivoire-dark);border:1px solid rgba(201,168,76,.35);border-radius:2px;margin:2rem auto;position:relative;box-shadow:0 4px 24px rgba(74,18,32,.08)}
+.qr-frame::before,.qr-frame::after{content:'';position:absolute;width:18px;height:18px;border-color:var(--or);border-style:solid}
+.qr-frame::before{top:-1px;left:-1px;border-width:2px 0 0 2px}
+.qr-frame::after{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
+.qr-caption{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--texte-muted);margin-top:.5rem}
+.qr-url{font-family:'EB Garamond',serif;font-style:italic;font-size:.95rem;color:var(--or);margin-top:.3rem}
+.qr-note{font-size:.9rem;color:var(--texte-muted);font-style:italic;margin-top:1.5rem;line-height:1.6}
+footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15);padding:2.5rem 2rem;text-align:center}
+.footer-names{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem;color:var(--or-light);margin-bottom:.4rem}
+.footer-date{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(250,246,238,.3)}
+.footer-address{font-size:.9rem;color:rgba(250,246,238,.25);margin-top:.4rem;font-style:italic}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:.5;transform:translateX(-50%) translateY(0)}50%{opacity:.9;transform:translateX(-50%) translateY(5px)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">A & A · 2027</span>
+    <ul class="nav-links">
+      <li><a href="#histoire">Notre histoire</a></li>
+      <li><a href="#programme">Programme</a></li>
+      <li><a href="#infos">Infos</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#rsvp">RSVP</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Nous avons l'immense joie de vous annoncer notre union</p>
+    <div style="position:relative;display:inline-block">
+      <div class="hero-ampersand">&</div>
+      <h1 class="hero-names">Andrei<br><em>& Aline</em></h1>
+    </div>
+    <div class="hero-sep">
+      <div class="hero-line"></div>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l1.5 5.5L14 7l-5.5 1.5L7 14 5.5 8.5 0 7l5.5-1.5z"/></svg>
+      <div class="hero-line"></div>
+    </div>
+    <p class="hero-date">17 Avril 2027</p>
+    <p class="hero-location">Château de la Rocq · Seneffe, Belgique</p>
+    <div class="countdown" id="countdown">
+      <div class="cdown-item"><div class="cdown-num" id="cd-j">—</div><div class="cdown-label">Jours</div></div>
+      <div class="cdown-item"><div class="cdown-num" id="cd-h">—</div><div class="cdown-label">Heures</div></div>
+      <div class="cdown-item"><div class="cdown-num" id="cd-m">—</div><div class="cdown-label">Minutes</div></div>
+      <div class="cdown-item"><div class="cdown-num" id="cd-s">—</div><div class="cdown-label">Secondes</div></div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Découvrir</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<section id="citation">
+  <div class="citation-inner reveal">
+    <span class="citation-mark">"</span>
+    <blockquote class="citation-text">Le mariage est et restera le voyage le plus important que l'homme puisse entreprendre.</blockquote>
+    <span class="citation-mark close">"</span>
+    <p class="citation-author">Victor Hugo</p>
+    <div class="citation-ornament">
+      <div class="citation-ornament-line"></div>
+      <svg width="12" height="12" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l1.5 5.5L14 7l-5.5 1.5L7 14 5.5 8.5 0 7l5.5-1.5z"/></svg>
+      <div class="citation-ornament-line"></div>
+    </div>
+  </div>
+</section>
+
+<section id="dedicace">
+  <div class="dedicace-inner">
+    <div class="dedicace-ornement reveal">
+      <div class="dedicace-ornement-line"></div>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:var(--or);opacity:.7"><path d="M12 21.7C5.4 13.6 2 9 2 6a10 10 0 0 1 20 0c0 3-3.4 7.6-10 15.7z"/></svg>
+      <div class="dedicace-ornement-line r"></div>
+    </div>
+    <p class="dedicace-intro reveal">Une invitation du cœur</p>
+    <p class="dedicace-texte reveal">
+      Si ces quelques mots vous parviennent aujourd'hui, c'est parce que vous comptez —
+      <em>vraiment</em> — dans nos vies.<br><br>
+      Chacun de vous a, à sa façon, tracé un sillon dans notre histoire.
+      Par un regard bienveillant, un rire partagé, un soutien discret ou une amitié
+      qui traverse le temps, vous avez contribué à faire de nous les personnes que nous sommes.<br><br>
+      C'est pourquoi, au moment d'entamer ensemble ce voyage extraordinaire,
+      il nous était impossible d'imaginer ce jour sans vous à nos côtés.<br><br>
+      <em>Vous n'êtes pas simplement des invités — vous êtes les témoins de ce que nous chérissons le plus.</em><br><br>
+      Nous serions profondément honorés et infiniment touchés de vous voir franchir les portes
+      du Château de la Rocq en ce 17 avril 2027, pour célébrer avec nous le plus beau des commencements.
+    </p>
+    <div class="dedicace-signature reveal">
+      <div class="dedicace-signature-line"></div>
+      <div class="dedicace-signature-names">Andrei & Aline</div>
+    </div>
+  </div>
+</section>
+
+<section id="histoire">
+  <div class="section-inner">
+    <p class="section-tag reveal">Notre histoire</p>
+    <h2 class="section-title reveal"><em>Le début d'un chapitre</em></h2>
+    <div class="divider reveal">
+      <div class="divider-line"></div>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.7C5.4 13.6 2 9 2 6a10 10 0 0 1 20 0c0 3-3.4 7.6-10 15.7z"/></svg>
+      <div class="divider-line r"></div>
+    </div>
+    <p class="histoire-text reveal">Deux chemins qui se sont croisés, deux âmes qui ont choisi de ne faire qu'un. Après avoir partagé tant de moments précieux, Andrei et Aline vous invitent à célébrer avec eux la plus belle des promesses, dans l'écrin du Château de la Rocq.</p>
+    <p class="histoire-text reveal" style="margin-top:1.5rem;font-style:normal;opacity:.45;font-size:.95rem;text-align:center">✦ &nbsp; Remplacez ce texte par votre histoire personnelle &nbsp; ✦</p>
+  </div>
+</section>
+
+<section id="programme">
+  <div class="section-inner">
+    <p class="section-tag reveal">Déroulement</p>
+    <h2 class="section-title reveal">Programme de <em>la journée</em></h2>
+    <div class="divider reveal">
+      <div class="divider-line"></div>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l1.8 6.6L20 8l-6.2 1.4L12 16l-1.8-6.6L4 8l6.2-1.4z"/></svg>
+      <div class="divider-line r"></div>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">15 h 00</div>
+        <div class="tl-title">Cérémonie civile <span class="tl-badge">Famille</span></div>
+        <div class="tl-desc">Maison communale · Cérémonie réservée à la famille proche</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">16 h 00</div>
+        <div class="tl-title">Vin d'honneur</div>
+        <div class="tl-desc">Accueil de tous les invités · Cocktail dans la cour du château</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">19 h 00</div>
+        <div class="tl-title">Dîner de gala</div>
+        <div class="tl-desc">Dîner assis dans la grange historique du château</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">22 h 00</div>
+        <div class="tl-title">Soirée dansante</div>
+        <div class="tl-desc">Jusqu'au bout de la nuit…</div>
+      </div>
+      <div class="tl-item" style="padding-bottom:0">
+        <div class="tl-dot small"></div>
+        <div class="tl-time" style="color:rgba(201,168,76,.5)">18 Avril · Matin</div>
+        <div class="tl-title" style="color:rgba(250,246,238,.6);font-size:1.1rem">Brunch du lendemain</div>
+        <div class="tl-desc">Pour les résidents du château · Sur réservation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="infos">
+  <div class="section-inner">
+    <p class="section-tag reveal">Informations pratiques</p>
+    <h2 class="section-title reveal">Tout ce qu'il faut <em>savoir</em></h2>
+    <div class="divider reveal">
+      <div class="divider-line"></div>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l1.8 6.6L20 8l-6.2 1.4L12 16l-1.8-6.6L4 8l6.2-1.4z"/></svg>
+      <div class="divider-line r"></div>
+    </div>
+    <div class="infos-grid">
+      <div class="info-card reveal">
+        <div class="info-card-icon">🏰</div>
+        <div class="info-card-title">Le lieu</div>
+        <div class="info-card-text">
+          <strong>Château de la Rocq</strong><br>
+          Rue Omer Lion · 7181 Seneffe, Belgique<br><br>
+          Château d'exception du 17<sup>e</sup> siècle, entouré de douves et d'un domaine de 30 hectares. À 25 min de Bruxelles.<br><br>
+          <a class="maps-link" href="https://maps.google.com/?q=Château+de+la+Rocq,+Rue+Omer+Lion,+7181+Seneffe,+Belgique" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            Voir sur Google Maps
+          </a>
+        </div>
+      </div>
+      <div class="info-card reveal">
+        <div class="info-card-icon">🚗</div>
+        <div class="info-card-title">Accès & parking</div>
+        <div class="info-card-text">
+          <strong>Parking privé et sécurisé</strong> sur le domaine, accessible en fauteuil roulant.<br><br>
+          Via l'<strong>E19</strong>, sortie Seneffe — au sud de Bruxelles et au nord de Charleroi.<br><br>
+          <em>Nous vous recommandons un conducteur désigné ou une chambre sur place.</em>
+        </div>
+      </div>
+      <div class="info-card reveal">
+        <div class="info-card-icon">🛏️</div>
+        <div class="info-card-title">Hébergements sur place</div>
+        <div class="info-card-text">
+          18 chambres avec douche privative, disponibles en <strong>nombre limité</strong> et à la demande — merci de le préciser dans votre RSVP.<br><br>
+          <strong>Brunch inclus</strong> le lendemain matin (18 avril) pour les résidents.
+        </div>
+      </div>
+      <div class="info-card reveal">
+        <div class="info-card-icon">🍽️</div>
+        <div class="info-card-title">Restrictions alimentaires</div>
+        <div class="info-card-text">
+          Signalez-nous toute contrainte dans votre RSVP :<br>
+          <ul>
+            <li>Allergie (gluten, lactose, fruits à coque…)</li>
+            <li>Végétarien / végétalien</li>
+            <li>Halal / casher</li>
+            <li>Autre besoin particulier</li>
+          </ul><br>
+          Cuisine à base de <strong>produits frais</strong> — chaque demande sera respectée.
+        </div>
+      </div>
+      <div class="info-card full reveal">
+        <div class="info-card-icon">👗</div>
+        <div class="info-card-title">Dress code · Tenue de soirée</div>
+        <div class="info-card-text">
+          Tenue de soirée requise.<br><br>
+          <strong>Le blanc est réservé à la mariée.</strong> Toutes les autres teintes sont les bienvenues ✦
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="galerie">
+  <div class="section-inner">
+    <p class="section-tag reveal">Souvenirs</p>
+    <h2 class="section-title reveal"><em>Notre galerie</em></h2>
+    <div class="divider reveal">
+      <div class="divider-line"></div>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.7C5.4 13.6 2 9 2 6a10 10 0 0 1 20 0c0 3-3.4 7.6-10 15.7z"/></svg>
+      <div class="divider-line r"></div>
+    </div>
+    <div class="galerie-grid reveal">
+      <div class="galerie-item">Vos photos<br>à venir</div>
+      <div class="galerie-item">Fiançailles<br>& moments<br>précieux</div>
+      <div class="galerie-item">Vos photos<br>à venir</div>
+      <div class="galerie-item">Vos photos<br>à venir</div>
+      <div class="galerie-item" style="aspect-ratio:3/4">Vos photos<br>à venir</div>
+      <div class="galerie-item">Vos photos<br>à venir</div>
+    </div>
+    <p class="galerie-note reveal">Les photos seront ajoutées au fil du temps ✦</p>
+  </div>
+</section>
+
+<!-- =============================================
+     RSVP ENRICHI — conjoint/conjointe + enfants
+     ============================================= -->
+<section id="rsvp">
+  <div class="section-inner">
+    <p class="section-tag reveal">Répondre</p>
+    <h2 class="section-title reveal">Confirmez votre <em>présence</em></h2>
+    <div class="divider reveal">
+      <div class="divider-line"></div>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l1.8 6.6L20 8l-6.2 1.4L12 16l-1.8-6.6L4 8l6.2-1.4z"/></svg>
+      <div class="divider-line r"></div>
+    </div>
+
+    <div class="rsvp-form reveal" id="rsvp-form">
+
+      <!-- Invité principal -->
+      <p class="rsvp-section-title" style="border-top:none;margin-top:0;padding-top:0">Vos coordonnées</p>
+      <div class="rsvp-row">
+        <div class="field-group"><label>Prénom</label><input type="text" placeholder="Votre prénom" id="f-prenom"></div>
+        <div class="field-group"><label>Nom</label><input type="text" placeholder="Votre nom" id="f-nom"></div>
+      </div>
+      <div class="field-group"><label>Adresse e-mail</label><input type="email" placeholder="votre@email.com" id="f-email"></div>
+      <div class="field-group"><label>Téléphone (optionnel)</label><input type="tel" placeholder="+32 …" id="f-tel"></div>
+
+      <!-- Présence -->
+      <div class="field-group">
+        <label>Serez-vous présent(e) ?</label>
+        <div class="rsvp-presence">
+          <button type="button" class="presence-btn" id="btn-oui" onclick="selectPresence('oui')">✓ Avec joie !</button>
+          <button type="button" class="presence-btn" id="btn-non" onclick="selectPresence('non')">✗ Malheureusement non</button>
+        </div>
+      </div>
+
+      <!-- Champs visibles si présent -->
+      <div id="fields-present" style="display:none;flex-direction:column;gap:1.2rem">
+
+        <!-- Régime invité principal -->
+        <div class="field-group">
+          <label>Vos restrictions alimentaires</label>
+          <input type="text" placeholder="Allergie, végétarien, halal… ou aucune" id="f-regime">
+        </div>
+
+        <!-- Conjoint / conjointe -->
+        <p class="rsvp-section-title">Conjoint(e) / partenaire</p>
+        <div class="field-group">
+          <label>Venez-vous accompagné(e) ?</label>
+          <div class="rsvp-presence">
+            <button type="button" class="presence-btn" id="btn-conjoint-oui" onclick="selectConjoint('oui')">Oui</button>
+            <button type="button" class="presence-btn" id="btn-conjoint-non" onclick="selectConjoint('non')">Non</button>
+          </div>
+        </div>
+
+        <div id="fields-conjoint" style="display:none;flex-direction:column;gap:.9rem">
+          <div class="accompagnant-bloc">
+            <div class="rsvp-row">
+              <div class="field-group"><label>Prénom</label><input type="text" placeholder="Prénom" id="c-prenom"></div>
+              <div class="field-group"><label>Nom</label><input type="text" placeholder="Nom" id="c-nom"></div>
+            </div>
+            <div class="field-group"><label>Restrictions alimentaires</label><input type="text" placeholder="Allergie, végétarien, halal… ou aucune" id="c-regime"></div>
+            <div class="field-group">
+              <label>Chambre sur place ?</label>
+              <select id="c-chambre">
+                <option value="non">Non merci</option>
+                <option value="oui-1">Oui — 1 chambre</option>
+                <option value="oui-2">Oui — 2 chambres</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label>Brunch du lendemain (18 avril) ?</label>
+              <select id="c-brunch">
+                <option value="non">Non merci</option>
+                <option value="oui">Oui, nous serons là !</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Enfants -->
+        <p class="rsvp-section-title">Enfant(s)</p>
+        <div class="field-group">
+          <label>Amenez-vous des enfants ?</label>
+          <div class="rsvp-presence">
+            <button type="button" class="presence-btn" id="btn-enfants-oui" onclick="selectEnfants('oui')">Oui</button>
+            <button type="button" class="presence-btn" id="btn-enfants-non" onclick="selectEnfants('non')">Non</button>
+          </div>
+        </div>
+
+        <div id="fields-enfants" style="display:none;flex-direction:column;gap:.8rem">
+          <div id="liste-enfants"></div>
+          <button type="button" class="add-accompagnant-btn" onclick="ajouterEnfant()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            Ajouter un enfant
+          </button>
+        </div>
+
+        <!-- Message -->
+        <p class="rsvp-section-title">Message</p>
+        <div class="field-group">
+          <label>Un mot pour les mariés ?</label>
+          <textarea rows="3" placeholder="Votre message…" id="f-message" style="resize:vertical"></textarea>
+        </div>
+
+      </div><!-- /fields-present -->
+
+      <button type="button" class="btn-submit" onclick="submitRSVP()">Envoyer ma réponse</button>
+      <p class="rsvp-note">Merci de répondre avant le 31 janvier 2027</p>
+    </div>
+
+    <div class="rsvp-success" id="rsvp-success">
+      <div style="font-size:2rem;color:var(--or);margin-bottom:1rem">✦</div>
+      <p>Merci pour votre réponse !<br>Nous avons hâte de vous retrouver.</p>
+    </div>
+  </div>
+</section>
+
+<section id="qr-section">
+  <div class="qr-inner">
+    <p class="section-tag reveal">Faire-part numérique</p>
+    <h2 class="section-title reveal" style="color:var(--bordeaux)">QR Code <em>du site</em></h2>
+    <div class="divider reveal">
+      <div class="divider-line"></div>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l1.8 6.6L20 8l-6.2 1.4L12 16l-1.8-6.6L4 8l6.2-1.4z"/></svg>
+      <div class="divider-line r"></div>
+    </div>
+    <div class="qr-frame reveal"><div id="qr-canvas"></div></div>
+    <p class="qr-caption reveal">À imprimer sur le faire-part</p>
+    <p class="qr-url reveal">andrei-aline2027.be</p>
+    <p class="qr-note reveal">Scannez ce code pour accéder directement au site du mariage.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-names">Andrei & Aline</div>
+  <div class="footer-date">17 Avril 2027 · Château de la Rocq</div>
+  <div class="footer-address">Rue Omer Lion, 7181 Seneffe · Belgique</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+/* === CONFIG === */
+var QR_CODE_URL = 'https://andrei-aline2027.be';
+var DATE_MARIAGE = '2027-04-17T16:00:00';
+
+/* === COMPTE À REBOURS === */
+function updateCountdown(){
+  var target=new Date(DATE_MARIAGE),now=new Date(),diff=target-now;
+  if(diff<=0){document.getElementById('countdown').innerHTML='<p style="color:var(--or-light);font-family:Cormorant Garamond,serif;font-style:italic;font-size:1.4rem">Le grand jour est arrivé !</p>';return}
+  var j=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
+  document.getElementById('cd-j').textContent=String(j).padStart(3,'0');
+  document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
+}
+updateCountdown();setInterval(updateCountdown,1000);
+
+/* === SCROLL REVEAL === */
+var reveals=document.querySelectorAll('.reveal');
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.1});
+reveals.forEach(function(r){obs.observe(r)});
+
+/* === RSVP : présence principale === */
+var presence=null;
+function selectPresence(val){
+  presence=val;
+  document.getElementById('btn-oui').classList.toggle('active',val==='oui');
+  document.getElementById('btn-non').classList.toggle('active',val==='non');
+  document.getElementById('fields-present').style.display=val==='oui'?'flex':'none';
+}
+
+/* === RSVP : conjoint === */
+var conjoint=null;
+function selectConjoint(val){
+  conjoint=val;
+  document.getElementById('btn-conjoint-oui').classList.toggle('active',val==='oui');
+  document.getElementById('btn-conjoint-non').classList.toggle('active',val==='non');
+  document.getElementById('fields-conjoint').style.display=val==='oui'?'flex':'none';
+}
+
+/* === RSVP : enfants === */
+var enfantsOui=false;
+var nbEnfants=0;
+function selectEnfants(val){
+  enfantsOui=val==='oui';
+  document.getElementById('btn-enfants-oui').classList.toggle('active',val==='oui');
+  document.getElementById('btn-enfants-non').classList.toggle('active',val==='non');
+  document.getElementById('fields-enfants').style.display=val==='oui'?'flex':'none';
+  if(val==='oui' && document.getElementById('liste-enfants').children.length===0){
+    ajouterEnfant();
+  }
+}
+
+function ajouterEnfant(){
+  nbEnfants++;
+  var id=nbEnfants;
+  var div=document.createElement('div');
+  div.className='accompagnant-bloc';
+  div.id='enfant-'+id;
+  div.innerHTML=
+    '<div class="accompagnant-header">'+
+      '<span class="accompagnant-label">Enfant '+id+'</span>'+
+      '<button type="button" class="accompagnant-remove" onclick="supprimerEnfant('+id+')" title="Supprimer">✕</button>'+
+    '</div>'+
+    '<div class="rsvp-row">'+
+      '<div class="field-group"><label>Prénom</label><input type="text" placeholder="Prénom" id="e'+id+'-prenom"></div>'+
+      '<div class="field-group"><label>Âge</label><input type="number" placeholder="Âge" min="0" max="17" id="e'+id+'-age" style="max-width:100px"></div>'+
+    '</div>'+
+    '<div class="field-group"><label>Restrictions alimentaires</label><input type="text" placeholder="Allergie, régime particulier… ou aucune" id="e'+id+'-regime"></div>';
+  document.getElementById('liste-enfants').appendChild(div);
+}
+
+function supprimerEnfant(id){
+  var el=document.getElementById('enfant-'+id);
+  if(el) el.remove();
+}
+
+/* === SUBMIT === */
+function submitRSVP(){
+  var prenom=document.getElementById('f-prenom').value.trim();
+  var nom=document.getElementById('f-nom').value.trim();
+  if(!prenom||!nom||!presence){
+    alert('Merci de remplir votre nom, prénom et votre présence.');return;
+  }
+  document.getElementById('rsvp-form').style.display='none';
+  document.getElementById('rsvp-success').style.display='block';
+}
+
+/* === QR CODE === */
+window.addEventListener('load',function(){
+  try{
+    new QRCode(document.getElementById('qr-canvas'),{
+      text:QR_CODE_URL,width:180,height:180,
+      colorDark:'#4A1220',colorLight:'#FAF6EE',
+      correctLevel:QRCode.CorrectLevel.H
+    });
+  }catch(e){
+    document.getElementById('qr-canvas').innerHTML='<p style="font-family:Cinzel,serif;font-size:.65rem;color:var(--texte-muted);padding:2rem">QR code disponible après hébergement</p>';
+  }
+});
+</script>
+</body>
+</html>
