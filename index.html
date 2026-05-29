@@ -172,6 +172,12 @@ section{padding:6rem 2rem}
 .qr-url{font-family:'EB Garamond',serif;font-style:italic;font-size:.95rem;color:var(--or);margin-top:.3rem}
 .qr-note{font-size:.9rem;color:var(--texte-muted);font-style:italic;margin-top:1.5rem;line-height:1.6}
 footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15);padding:2.5rem 2rem;text-align:center}
+/* === MUSIC PLAYER === */
+#music-btn{position:fixed;bottom:1.8rem;right:1.8rem;z-index:200;width:46px;height:46px;border-radius:50%;background:var(--bordeaux);border:1px solid rgba(201,168,76,.5);box-shadow:0 4px 18px rgba(74,18,32,.35);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s}
+#music-btn:hover{background:var(--bordeaux-light);transform:scale(1.08)}
+#music-btn svg{width:18px;height:18px;fill:var(--or-light)}
+#music-tooltip{position:fixed;bottom:5rem;right:1.8rem;z-index:200;background:var(--bordeaux-deep);color:var(--ivoire);font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;padding:.45rem .85rem;border-radius:2px;border:1px solid rgba(201,168,76,.3);opacity:0;pointer-events:none;transition:opacity .3s;white-space:nowrap}
+#yt-player{position:fixed;left:-9999px;top:-9999px;width:1px;height:1px}
 .footer-names{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem;color:var(--or-light);margin-bottom:.4rem}
 .footer-date{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(250,246,238,.3)}
 .footer-address{font-size:.9rem;color:rgba(250,246,238,.25);margin-top:.4rem;font-style:italic}
@@ -592,6 +598,16 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
   <div class="footer-address">Rue Omer Lion, 7181 Seneffe · Belgique</div>
 </footer>
 
+<!-- Lecteur YouTube caché -->
+<div id="yt-player"></div>
+
+<!-- Bouton musique flottant -->
+<div id="music-tooltip">A Thousand Years · Christina Perri</div>
+<button id="music-btn" onclick="toggleMusic()" aria-label="Musique">
+  <svg id="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+  <svg id="icon-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+</button>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 /* === CONFIG === */
@@ -724,6 +740,37 @@ function copyIban(){
     lbl.textContent='Copié !';
     setTimeout(function(){lbl.textContent='Copier l\'IBAN';},2000);
   });
+}
+</script>
+
+<!-- YouTube IFrame API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+var ytPlayer, ytReady = false, isPlaying = false;
+
+function onYouTubeIframeAPIReady() {
+  ytPlayer = new YT.Player('yt-player', {
+    videoId: 'rtOvBOTyX00',
+    playerVars: { autoplay: 0, controls: 0, loop: 1, playlist: 'rtOvBOTyX00' },
+    events: {
+      onReady: function() { ytReady = true; },
+      onStateChange: function(e) {
+        isPlaying = e.data === YT.PlayerState.PLAYING;
+        document.getElementById('icon-play').style.display = isPlaying ? 'none' : '';
+        document.getElementById('icon-pause').style.display = isPlaying ? '' : 'none';
+      }
+    }
+  });
+}
+
+function toggleMusic() {
+  if (!ytReady) return;
+  if (isPlaying) { ytPlayer.pauseVideo(); }
+  else { ytPlayer.playVideo(); }
+  // affiche le tooltip brièvement
+  var tip = document.getElementById('music-tooltip');
+  tip.style.opacity = '1';
+  setTimeout(function(){ tip.style.opacity = '0'; }, 2500);
 }
 </script>
 </body>
