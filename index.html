@@ -148,6 +148,20 @@ section{padding:6rem 2rem}
 .rsvp-success{display:none;text-align:center;padding:3rem 1rem}
 .rsvp-success p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--ivoire);opacity:.8}
 
+/* === CAGNOTTE === */
+#cagnotte{background:var(--ivoire-dark);padding:5rem 2rem}
+.cagnotte-inner{max-width:700px;margin:0 auto;text-align:center}
+.cagnotte-texte{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;line-height:1.8;color:var(--texte-muted);margin:2rem 0}
+.cagnotte-card{display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;background:var(--ivoire);border:1px solid rgba(201,168,76,.35);border-radius:4px;padding:2.5rem;box-shadow:0 4px 24px rgba(74,18,32,.08);margin-top:1rem}
+.cagnotte-qr{display:flex;flex-direction:column;align-items:center;gap:.8rem}
+.cagnotte-qr-hint{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--texte-muted);line-height:1.6}
+.cagnotte-iban-bloc{display:flex;flex-direction:column;align-items:flex-start;gap:.6rem}
+.cagnotte-label{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bordeaux)}
+.cagnotte-nom{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--texte)}
+.cagnotte-iban{font-family:'Courier New',monospace;font-size:1.1rem;color:var(--bordeaux);letter-spacing:.08em;font-weight:600}
+.cagnotte-copy-btn{display:flex;align-items:center;gap:.5rem;background:transparent;border:1px solid var(--or);color:var(--or);font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:.55rem 1rem;cursor:pointer;border-radius:2px;transition:all .3s}
+.cagnotte-copy-btn:hover{background:var(--or);color:var(--ivoire)}
+.cagnotte-comm{font-family:'EB Garamond',serif;font-style:italic;font-size:.9rem;color:var(--texte-muted);margin-top:.3rem}
 #qr-section{background:var(--ivoire);padding:5rem 2rem}
 .qr-inner{max-width:500px;margin:0 auto;text-align:center}
 .qr-frame{display:inline-block;padding:1.2rem;background:var(--ivoire-dark);border:1px solid rgba(201,168,76,.35);border-radius:2px;margin:2rem auto;position:relative;box-shadow:0 4px 24px rgba(74,18,32,.08)}
@@ -177,6 +191,7 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
       <li><a href="#programme">Programme</a></li>
       <li><a href="#infos">Infos</a></li>
       <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#cagnotte">Cadeaux</a></li>
       <li><a href="#rsvp">RSVP</a></li>
     </ul>
   </div>
@@ -261,8 +276,17 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.7C5.4 13.6 2 9 2 6a10 10 0 0 1 20 0c0 3-3.4 7.6-10 15.7z"/></svg>
       <div class="divider-line r"></div>
     </div>
-    <p class="histoire-text reveal">Deux chemins qui se sont croisés, deux âmes qui ont choisi de ne faire qu'un. Après avoir partagé tant de moments précieux, Andrei et Aline vous invitent à célébrer avec eux la plus belle des promesses, dans l'écrin du Château de la Rocq.</p>
-    <p class="histoire-text reveal" style="margin-top:1.5rem;font-style:normal;opacity:.45;font-size:.95rem;text-align:center">✦ &nbsp; Remplacez ce texte par votre histoire personnelle &nbsp; ✦</p>
+    <p class="histoire-text reveal">Il y a sept ans, dans l'effervescence d'un service d'urgences de la clinique Sainte-Elisabeth — là où le temps s'accélère, où chaque seconde compte — deux destins se sont croisés pour la première fois. Elle, Aline, tout entière à sa mission, ne s'en est pas rendu compte tout de suite. Lui, Andrei, a reçu le choc. Pas celui que l'on soigne, mais celui que l'on garde — ce genre de rencontre qui s'installe silencieusement, comme un diagnostic que le cœur pose avant même que la raison ne comprenne.</p>
+    <p class="histoire-text reveal">Il a su, dès ce premier regard. Avec cette certitude tranquille et absolue que l'on ne s'explique pas — qu'elle était elle, et que personne d'autre ne pourrait jamais l'être.</p>
+    <p class="histoire-text reveal">Mais les plus belles histoires ne se prescrivent pas d'emblée. Elles se construisent doucement, à petites doses, comme un traitement de fond. Les jours ont passé, les services aussi, et Andrei a appris à être patient — lui qui savait si bien que certaines guérisons prennent du temps. Il observait, il espérait, il attendait.</p>
+    <p class="histoire-text reveal">Puis le hasard — ce grand urgentiste des âmes — a bien voulu les rapprocher à nouveau. Les conversations ont repris, plus longues, plus profondes. Les sourires se sont attardés. Et quelque chose de doux, d'irrésistible, a commencé à prendre forme — comme un pouls qui s'emballe doucement, régulièrement, sans qu'on puisse rien y faire.</p>
+    <p class="histoire-text reveal">Leurs premiers rendez-vous ont été marqués par la magie singulière de la Butte du Lion de Waterloo, ce lieu où l'histoire a basculé — et où la leur a vraiment commencé. Entre ces deux âmes que tout semblait avoir réunies, les mots sont devenus confidences, les silences complicité, et l'attachement, quelque chose d'irréversible.</p>
+    <p class="histoire-text reveal">Depuis, leur vie à deux n'a cessé de s'écrire en grand. Il y a eu l'Île de la Réunion, peut-être le chapitre le plus envoûtant de leur histoire — ces longs mois suspendus entre deux océans, bercés par les volcans, les cirques vertigineux et l'air chaud du bout du monde. Une parenthèse hors du temps qui les a soudés comme seule l'aventure partagée sait le faire, loin de tout, proches de l'essentiel.</p>
+    <p class="histoire-text reveal">Et puis le monde entier, exploré main dans la main — l'Angleterre brumeuse, la France lumineuse, le Maroc envoûtant, les États-Unis immenses. Chaque pays traversé, une nouvelle couche de leur histoire. Chaque départ, une façon de mieux revenir l'un vers l'autre.</p>
+    <p class="histoire-text reveal">Autour d'eux, une famille extraordinaire et des amis d'une valeur inestimable. Et leurs témoins — qu'ils aiment et chérissent plus que les mots ne sauraient le dire — sans qui rien de tout cela ne serait pareil. Ils savent ce qu'ils leur doivent, et ils les en remercient du fond du cœur.</p>
+    <p class="histoire-text reveal">Et puis, le 12 janvier 2026, leur bonheur a pris un prénom : Aliénor. Leur petite fille, leur plus belle urgence, celle qui a tout bousculé dans le meilleur sens du monde — et qui les comble, chaque jour, d'une joie nouvelle.</p>
+    <p class="histoire-text reveal">C'est forts de tout cela — de ces années tissées ensemble, de ces kilomètres parcourus main dans la main, de cette île qui les a transformés, de cette famille construite avec amour et patience — qu'Andrei et Aline franchissent aujourd'hui le plus beau des seuils.</p>
+    <p class="histoire-text reveal" style="text-align:center;font-style:italic;margin-top:2rem">Le diagnostic est posé, l'ordonnance est claire : une vie entière, ensemble.</p>
   </div>
 </section>
 
@@ -347,7 +371,8 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
         <div class="info-card-title">Hébergements sur place</div>
         <div class="info-card-text">
           18 chambres avec douche privative, disponibles en <strong>nombre limité</strong> et à la demande — merci de le préciser dans votre RSVP.<br><br>
-          <strong>Brunch inclus</strong> le lendemain matin (18 avril) pour les résidents.
+          <strong>Brunch inclus</strong> le lendemain matin (18 avril) pour les résidents.<br><br>
+          <strong>Alternative :</strong> l'hôtel <a href="https://www.hotelnivellessud.be/" target="_blank" rel="noopener" style="color:var(--bordeaux)">Van der Valk de Nivelles</a> se trouve à moins de 10 minutes en voiture du lieu de réception. <a href="https://maps.app.goo.gl/yjAY2AXgr8xYsefv9" target="_blank" rel="noopener" style="color:var(--bordeaux)">📍 Google Maps</a>
         </div>
       </div>
       <div class="info-card reveal">
@@ -512,6 +537,39 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
   </div>
 </section>
 
+<section id="cagnotte">
+  <div class="cagnotte-inner">
+    <p class="section-tag reveal">Liste de mariage</p>
+    <h2 class="section-title reveal">Un cadeau <em>du cœur</em></h2>
+    <div class="divider reveal">
+      <div class="divider-line"></div>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l1.8 6.6L20 8l-6.2 1.4L12 16l-1.8-6.6L4 8l6.2-1.4z"/></svg>
+      <div class="divider-line r"></div>
+    </div>
+    <p class="cagnotte-texte reveal">
+      Nous avons déjà la chance de partager un beau foyer ensemble.<br>
+      Si vous souhaitez nous gâter, la plus belle des attentions serait de contribuer<br>
+      à nos projets et à notre voyage de noces.
+    </p>
+    <div class="cagnotte-card reveal">
+      <div class="cagnotte-qr">
+        <div id="epc-qr"></div>
+        <p class="cagnotte-qr-hint">Scannez avec votre app bancaire<br><span style="font-size:.7rem;opacity:.6">(ING, BNP, KBC, Belfius…)</span></p>
+      </div>
+      <div class="cagnotte-iban-bloc">
+        <p class="cagnotte-label">Virement bancaire</p>
+        <p class="cagnotte-nom">Andrei &amp; Aline</p>
+        <p class="cagnotte-iban" id="iban-txt">BE16 0019 9176 6674</p>
+        <button class="cagnotte-copy-btn" onclick="copyIban()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span id="copy-label">Copier l'IBAN</span>
+        </button>
+        <p class="cagnotte-comm">Communication libre — votre prénom suffit ✦</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="qr-section">
   <div class="qr-inner">
     <p class="section-tag reveal">Faire-part numérique</p>
@@ -623,7 +681,7 @@ function submitRSVP(){
   document.getElementById('rsvp-success').style.display='block';
 }
 
-/* === QR CODE === */
+/* === QR CODE SITE === */
 window.addEventListener('load',function(){
   try{
     new QRCode(document.getElementById('qr-canvas'),{
@@ -634,7 +692,39 @@ window.addEventListener('load',function(){
   }catch(e){
     document.getElementById('qr-canvas').innerHTML='<p style="font-family:Cinzel,serif;font-size:.65rem;color:var(--texte-muted);padding:2rem">QR code disponible après hébergement</p>';
   }
+
+  /* === QR CODE EPC (virement bancaire) === */
+  var epcData = [
+    'BCD',       // Service Tag
+    '002',       // Version
+    '1',         // Encoding (UTF-8)
+    'SCT',       // SEPA Credit Transfer
+    '',          // BIC (optionnel)
+    'Andrei & Aline',
+    'BE16001991766674',
+    '',          // Montant (libre)
+    '',          // Purpose
+    '',          // Reference
+    'Cadeau de mariage'
+  ].join('\n');
+  try{
+    new QRCode(document.getElementById('epc-qr'),{
+      text:epcData,width:160,height:160,
+      colorDark:'#4A1220',colorLight:'#FAF6EE',
+      correctLevel:QRCode.CorrectLevel.M
+    });
+  }catch(e){}
 });
+
+/* === COPIER IBAN === */
+function copyIban(){
+  var iban='BE16001991766674';
+  navigator.clipboard.writeText(iban).then(function(){
+    var lbl=document.getElementById('copy-label');
+    lbl.textContent='Copié !';
+    setTimeout(function(){lbl.textContent='Copier l\'IBAN';},2000);
+  });
+}
 </script>
 </body>
 </html>
