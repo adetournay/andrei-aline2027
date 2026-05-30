@@ -180,6 +180,25 @@ section{padding:6rem 2rem}
 .faq-item.open .faq-arrow{transform:rotate(180deg)}
 .faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;padding:0 1.3rem;font-family:'EB Garamond',serif;font-size:1.05rem;line-height:1.8;color:var(--texte-muted)}
 .faq-item.open .faq-answer{max-height:300px;padding:.2rem 1.3rem 1.2rem}
+/* === JEU === */
+#jeu{background:var(--ivoire-dark);padding:5rem 2rem}
+.jeu-intro{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--texte-muted);text-align:center;margin:1.5rem 0 2.5rem;line-height:1.8}
+.jeu-grid{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:1.2rem}
+.jeu-card{background:var(--ivoire);border:1px solid rgba(201,168,76,.25);border-radius:4px;padding:1.5rem;box-shadow:0 2px 12px rgba(74,18,32,.06)}
+.jeu-question{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--bordeaux);margin-bottom:1rem;text-align:center}
+.jeu-btns{display:flex;gap:.8rem}
+.jeu-btn{flex:1;padding:.75rem;border:1px solid rgba(201,168,76,.3);background:transparent;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .3s;color:var(--texte-muted)}
+.jeu-btn:hover{border-color:var(--or);color:var(--bordeaux);background:rgba(201,168,76,.08)}
+.jeu-btn.voted-andrei{background:var(--bordeaux);color:var(--ivoire);border-color:var(--bordeaux)}
+.jeu-btn.voted-aline{background:var(--bordeaux);color:var(--ivoire);border-color:var(--bordeaux)}
+.jeu-bars{margin-top:1rem;display:none;flex-direction:column;gap:.4rem}
+.jeu-bar-row{display:flex;align-items:center;gap:.8rem;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.1em;color:var(--texte-muted)}
+.jeu-bar-label{width:55px;text-align:right;flex-shrink:0}
+.jeu-bar-track{flex:1;height:8px;background:rgba(201,168,76,.15);border-radius:4px;overflow:hidden}
+.jeu-bar-fill{height:100%;background:var(--bordeaux);border-radius:4px;transition:width .6s ease}
+.jeu-bar-fill.aline{background:var(--bordeaux-light)}
+.jeu-bar-pct{width:35px;font-size:.6rem;color:var(--texte-muted)}
+.jeu-voted-msg{text-align:center;margin-top:.8rem;font-family:'EB Garamond',serif;font-style:italic;font-size:.9rem;color:var(--texte-muted);display:none}
 /* === PLAYLIST === */
 #playlist{background:var(--bordeaux-deep);padding:5rem 2rem}
 #playlist .section-tag{color:var(--or)}
@@ -274,6 +293,7 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
       <li><a href="#programme">Programme</a></li>
       <li><a href="#infos">Infos</a></li>
       <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#jeu">Jeu</a></li>
       <li><a href="#playlist">Playlist</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#cagnotte">Cadeaux</a></li>
@@ -773,6 +793,20 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
   </div>
 </section>
 
+<section id="jeu">
+  <div class="section-inner">
+    <p class="section-tag reveal">Petit jeu</p>
+    <h2 class="section-title reveal">Qui d'<em>Andrei ou Aline</em> ?</h2>
+    <div class="divider reveal">
+      <div class="divider-line"></div>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l1.8 6.6L20 8l-6.2 1.4L12 16l-1.8-6.6L4 8l6.2-1.4z"/></svg>
+      <div class="divider-line r"></div>
+    </div>
+    <p class="jeu-intro reveal">Vous pensez les connaître ? Prouvez-le ! Votez pour chaque question et découvrez les vraies réponses le jour J ✦</p>
+    <div class="jeu-grid reveal" id="jeu-grid"></div>
+  </div>
+</section>
+
 <section id="playlist">
   <div class="section-inner">
     <p class="section-tag reveal">Ambiance musicale</p>
@@ -1054,6 +1088,94 @@ window.addEventListener('load',function(){
     });
   }catch(e){}
 });
+
+/* === JEU VOTES === */
+var AT_VOTES='tblOoxlXetJlsMqvV';
+var AT_VOTES_URL='https://api.airtable.com/v0/'+AT_BASE+'/'+AT_VOTES;
+
+var JEU_QUESTIONS=[
+  'Qui est le plus romantique ?',
+  'Qui conduit le mieux ?',
+  'Qui choisit toujours le restaurant ?',
+  'Qui se lève le plus tôt ?',
+  'Qui dépense le plus ?',
+  'Qui pleurera le plus ce jour-là ?',
+  'Qui cuisine le mieux ?',
+  'Qui est le plus mauvais perdant ?',
+  'Qui prend le plus de temps à se préparer ?',
+  'Qui a dit "je t\'aime" en premier ?',
+  'Qui est le plus ordonné ?',
+  'Qui râle le plus ?'
+];
+
+var JEU_REPONSES=['Andrei','Les deux','Andrei','Andrei','Andrei','Aline','Andrei','Andrei','Aline','Aline','Aline','Andrei'];
+var jeuVotes={};
+
+function buildJeu(){
+  var grid=document.getElementById('jeu-grid');
+  if(!grid) return;
+  grid.innerHTML=JEU_QUESTIONS.map(function(q,i){
+    var voted=localStorage.getItem('jeu-vote-'+i);
+    return '<div class="jeu-card" id="jeu-card-'+i+'">'+
+      '<div class="jeu-question">'+q+'</div>'+
+      '<div class="jeu-btns">'+
+        '<button class="jeu-btn'+(voted==='Andrei'?' voted-andrei':'')+'" onclick="voteJeu('+i+',\'Andrei\')">👨 Andrei</button>'+
+        '<button class="jeu-btn'+(voted==='Aline'?' voted-aline':'')+'" onclick="voteJeu('+i+',\'Aline\')">👩 Aline</button>'+
+      '</div>'+
+      '<div class="jeu-bars" id="jeu-bars-'+i+'">'+
+        '<div class="jeu-bar-row"><span class="jeu-bar-label">Andrei</span><div class="jeu-bar-track"><div class="jeu-bar-fill" id="jeu-fill-a-'+i+'" style="width:0%"></div></div><span class="jeu-bar-pct" id="jeu-pct-a-'+i+'">0%</span></div>'+
+        '<div class="jeu-bar-row"><span class="jeu-bar-label">Aline</span><div class="jeu-bar-track"><div class="jeu-bar-fill aline" id="jeu-fill-b-'+i+'" style="width:0%"></div></div><span class="jeu-bar-pct" id="jeu-pct-b-'+i+'">0%</span></div>'+
+      '</div>'+
+      (voted?'<p class="jeu-voted-msg" style="display:block">Tu as voté <strong>'+voted+'</strong> ✦ Résultats le jour J !</p>':'')+
+    '</div>';
+  }).join('');
+  loadJeuVotes();
+}
+
+function voteJeu(idx, choix){
+  var already=localStorage.getItem('jeu-vote-'+idx);
+  if(already) return;
+  localStorage.setItem('jeu-vote-'+idx, choix);
+  var btns=document.querySelectorAll('#jeu-card-'+idx+' .jeu-btn');
+  btns[0].className='jeu-btn'+(choix==='Andrei'?' voted-andrei':'');
+  btns[1].className='jeu-btn'+(choix==='Aline'?' voted-aline':'');
+  var msg=document.querySelector('#jeu-card-'+idx+' .jeu-voted-msg');
+  if(msg){msg.style.display='block';msg.innerHTML='Tu as voté <strong>'+choix+'</strong> ✦ Résultats le jour J !';}
+  fetch(AT_VOTES_URL,{
+    method:'POST',
+    headers:{Authorization:'Bearer '+AT_TOKEN,'Content-Type':'application/json'},
+    body:JSON.stringify({fields:{Question:JEU_QUESTIONS[idx],Vote:choix}})
+  }).then(function(){loadJeuVotes();});
+}
+
+function loadJeuVotes(){
+  fetch(AT_VOTES_URL+'?pageSize=100',{headers:{Authorization:'Bearer '+AT_TOKEN}})
+  .then(function(r){return r.json();})
+  .then(function(data){
+    if(!data.records) return;
+    var counts={};
+    JEU_QUESTIONS.forEach(function(q){counts[q]={Andrei:0,Aline:0};});
+    data.records.forEach(function(r){
+      var q=r.fields.Question, v=r.fields.Vote;
+      if(counts[q]&&(v==='Andrei'||v==='Aline')) counts[q][v]++;
+    });
+    JEU_QUESTIONS.forEach(function(q,i){
+      var a=counts[q].Andrei, b=counts[q].Aline, t=a+b;
+      if(t===0) return;
+      var pa=Math.round(a/t*100), pb=100-pa;
+      var fa=document.getElementById('jeu-fill-a-'+i);
+      var fb=document.getElementById('jeu-fill-b-'+i);
+      var pca=document.getElementById('jeu-pct-a-'+i);
+      var pcb=document.getElementById('jeu-pct-b-'+i);
+      var bars=document.getElementById('jeu-bars-'+i);
+      if(fa){fa.style.width=pa+'%';} if(fb){fb.style.width=pb+'%';}
+      if(pca){pca.textContent=pa+'%';} if(pcb){pcb.textContent=pb+'%';}
+      if(bars && localStorage.getItem('jeu-vote-'+i)) bars.style.display='flex';
+    });
+  });
+}
+
+window.addEventListener('load',function(){buildJeu();});
 
 /* === PLAYLIST AIRTABLE === */
 var AT_TOKEN=atob('cGF0bDBGeUZXVDlFNVFYTzMuYWY1ZjYwODA5MWVkNDNlZGMwY2E1NDI1MTNkNjY4MWJlNzM5MjM1MzI1NjVkNDZlNTIzYjUwOWZkZmEyOGUxYQ==');
