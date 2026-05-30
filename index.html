@@ -1131,15 +1131,7 @@ function submitRSVP(){
 
 /* === QR CODE SITE === */
 window.addEventListener('load',function(){
-  try{
-    new QRCode(document.getElementById('qr-canvas'),{
-      text:QR_CODE_URL,width:180,height:180,
-      colorDark:'#4A1220',colorLight:'#FAF6EE',
-      correctLevel:QRCode.CorrectLevel.H
-    });
-  }catch(e){
-    document.getElementById('qr-canvas').innerHTML='<p style="font-family:Cinzel,serif;font-size:.65rem;color:var(--texte-muted);padding:2rem">QR code disponible après hébergement</p>';
-  }
+  /* QR site supprimé */
 
   /* === QR CODE ALBUM PHOTOS === */
   try{
