@@ -939,21 +939,6 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
   </div>
 </section>
 
-<section id="qr-section">
-  <div class="qr-inner">
-    <p class="section-tag reveal">Faire-part numérique</p>
-    <h2 class="section-title reveal" style="color:var(--bordeaux)">QR Code <em>du site</em></h2>
-    <div class="divider reveal">
-      <div class="divider-line"></div>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l1.8 6.6L20 8l-6.2 1.4L12 16l-1.8-6.6L4 8l6.2-1.4z"/></svg>
-      <div class="divider-line r"></div>
-    </div>
-    <div class="qr-frame reveal"><div id="qr-canvas"></div></div>
-    <p class="qr-caption reveal">À imprimer sur le faire-part</p>
-    <p class="qr-url reveal">andrei-aline2027.be</p>
-    <p class="qr-note reveal">Scannez ce code pour accéder directement au site du mariage.</p>
-  </div>
-</section>
 
 <footer>
   <div class="footer-names">Andrei & Aline</div>
@@ -1212,51 +1197,31 @@ function getDayName(ts){
   return days[new Date(ts*1000).getDay()];
 }
 
-var OWM_KEY=atob('ZmZkODBkNDdlYWFhMTRiNDM4YWVjNDBkMGVlMDQ5Njg=');
-var OWM_CITY='Seneffe,BE';
-
-function owmIcon(id){
-  if(id>=200&&id<300) return '⛈️';
-  if(id>=300&&id<400) return '🌦️';
-  if(id>=500&&id<600) return '🌧️';
-  if(id>=600&&id<700) return '❄️';
-  if(id>=700&&id<800) return '🌫️';
-  if(id===800) return '☀️';
-  if(id===801||id===802) return '⛅';
+function getWeatherIcon(code){
+  if(code<=232) return '⛈️';
+  if(code<=321) return '🌦️';
+  if(code<=531) return '🌧️';
+  if(code<=622) return '❄️';
+  if(code<=781) return '🌪️';
+  if(code===800) return '☀️';
+  if(code<=802) return '⛅';
   return '☁️';
 }
 
 function loadMeteo(){
-  // Météo actuelle
-  fetch('https://api.openweathermap.org/data/2.5/weather?q='+OWM_CITY+'&appid='+OWM_KEY+'&units=metric&lang=fr')
+  fetch('https://wttr.in/Seneffe,Belgium?format=j1')
   .then(function(r){return r.json();})
   .then(function(d){
-    document.getElementById('meteo-temp').textContent=Math.round(d.main.temp);
-    document.getElementById('meteo-desc').textContent=d.weather[0].description;
-    document.getElementById('meteo-icon').textContent=owmIcon(d.weather[0].id);
-  });
-
-  // Prévisions 3 jours
-  fetch('https://api.openweathermap.org/data/2.5/forecast?q='+OWM_CITY+'&appid='+OWM_KEY+'&units=metric&lang=fr&cnt=32')
-  .then(function(r){return r.json();})
-  .then(function(d){
-    var jours={};
-    var jNames=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
-    d.list.forEach(function(item){
-      var date=item.dt_txt.split(' ')[0];
-      var today=new Date().toISOString().split('T')[0];
-      if(date===today) return;
-      if(!jours[date]) jours[date]={max:-99,min:99,icon:item.weather[0].id,name:jNames[new Date(date).getDay()]};
-      jours[date].max=Math.max(jours[date].max,Math.round(item.main.temp_max));
-      jours[date].min=Math.min(jours[date].min,Math.round(item.main.temp_min));
-    });
-    var keys=Object.keys(jours).slice(0,3);
-    document.getElementById('meteo-forecast').innerHTML=keys.map(function(k){
-      var j=jours[k];
+    var cur=d.current_condition[0];
+    document.getElementById('meteo-temp').textContent=cur.temp_C;
+    document.getElementById('meteo-desc').textContent=cur.lang_fr?cur.lang_fr[0].value:cur.weatherDesc[0].value;
+    document.getElementById('meteo-icon').textContent=getWeatherIcon(parseInt(cur.weatherCode));
+    var jours=['Auj.','Dem.','Après-dem.'];
+    document.getElementById('meteo-forecast').innerHTML=d.weather.slice(0,3).map(function(day,i){
       return '<div class="meteo-day">'+
-        '<div>'+j.name+'</div>'+
-        '<span class="meteo-day-icon">'+owmIcon(j.icon)+'</span>'+
-        '<div class="meteo-day-temp">'+j.max+'°/'+j.min+'°</div>'+
+        '<div>'+jours[i]+'</div>'+
+        '<span class="meteo-day-icon">'+getWeatherIcon(parseInt(day.hourly[4].weatherCode))+'</span>'+
+        '<div class="meteo-day-temp">'+day.maxtempC+'°/'+day.mintempC+'°</div>'+
       '</div>';
     }).join('');
   })
