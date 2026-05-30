@@ -1146,27 +1146,51 @@ function getDayName(ts){
   return days[new Date(ts*1000).getDay()];
 }
 
+var OWM_KEY=atob('ZmZkODBkNDdlYWFhMTRiNDM4YWVjNDBkMGVlMDQ5Njg=');
+var OWM_CITY='Seneffe,BE';
+
+function owmIcon(id){
+  if(id>=200&&id<300) return '⛈️';
+  if(id>=300&&id<400) return '🌦️';
+  if(id>=500&&id<600) return '🌧️';
+  if(id>=600&&id<700) return '❄️';
+  if(id>=700&&id<800) return '🌫️';
+  if(id===800) return '☀️';
+  if(id===801||id===802) return '⛅';
+  return '☁️';
+}
+
 function loadMeteo(){
-  fetch('https://wttr.in/Seneffe,Belgium?format=j1')
+  // Météo actuelle
+  fetch('https://api.openweathermap.org/data/2.5/weather?q='+OWM_CITY+'&appid='+OWM_KEY+'&units=metric&lang=fr')
   .then(function(r){return r.json();})
   .then(function(d){
-    var cur=d.current_condition[0];
-    var temp=cur.temp_C;
-    var desc=cur.lang_fr?cur.lang_fr[0].value:cur.weatherDesc[0].value;
-    var code=parseInt(cur.weatherCode);
-    document.getElementById('meteo-temp').textContent=temp;
-    document.getElementById('meteo-desc').textContent=desc;
-    document.getElementById('meteo-icon').textContent=getWeatherIcon(code);
+    document.getElementById('meteo-temp').textContent=Math.round(d.main.temp);
+    document.getElementById('meteo-desc').textContent=d.weather[0].description;
+    document.getElementById('meteo-icon').textContent=owmIcon(d.weather[0].id);
+  });
 
-    var days=d.weather.slice(0,3);
-    var jours=['Aujourd\'hui','Demain','Après-demain'];
-    document.getElementById('meteo-forecast').innerHTML=days.map(function(day,i){
-      var maxT=day.maxtempC, minT=day.mintempC;
-      var dayCode=parseInt(day.hourly[4].weatherCode);
+  // Prévisions 3 jours
+  fetch('https://api.openweathermap.org/data/2.5/forecast?q='+OWM_CITY+'&appid='+OWM_KEY+'&units=metric&lang=fr&cnt=32')
+  .then(function(r){return r.json();})
+  .then(function(d){
+    var jours={};
+    var jNames=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
+    d.list.forEach(function(item){
+      var date=item.dt_txt.split(' ')[0];
+      var today=new Date().toISOString().split('T')[0];
+      if(date===today) return;
+      if(!jours[date]) jours[date]={max:-99,min:99,icon:item.weather[0].id,name:jNames[new Date(date).getDay()]};
+      jours[date].max=Math.max(jours[date].max,Math.round(item.main.temp_max));
+      jours[date].min=Math.min(jours[date].min,Math.round(item.main.temp_min));
+    });
+    var keys=Object.keys(jours).slice(0,3);
+    document.getElementById('meteo-forecast').innerHTML=keys.map(function(k){
+      var j=jours[k];
       return '<div class="meteo-day">'+
-        '<div>'+jours[i]+'</div>'+
-        '<span class="meteo-day-icon">'+getWeatherIcon(dayCode)+'</span>'+
-        '<div class="meteo-day-temp">'+maxT+'°/'+minT+'°</div>'+
+        '<div>'+j.name+'</div>'+
+        '<span class="meteo-day-icon">'+owmIcon(j.icon)+'</span>'+
+        '<div class="meteo-day-temp">'+j.max+'°/'+j.min+'°</div>'+
       '</div>';
     }).join('');
   })
