@@ -189,6 +189,11 @@ section{padding:6rem 2rem}
 .album-actions{text-align:center;margin:1.5rem 0}
 .album-btn{display:inline-flex;align-items:center;gap:.7rem;background:transparent;border:1px solid var(--or);color:var(--or);font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;border-radius:2px;transition:all .3s}
 .album-btn:hover{background:var(--or);color:var(--bordeaux-deep)}
+.album-steps{max-width:540px;margin:1.8rem auto;display:flex;flex-direction:column;gap:1rem}
+.album-step{display:flex;align-items:flex-start;gap:1rem}
+.album-step-num{width:28px;height:28px;border-radius:50%;background:rgba(201,168,76,.2);border:1px solid rgba(201,168,76,.4);color:var(--or);font-family:'Cinzel',serif;font-size:.7rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+.album-step-txt{font-family:'EB Garamond',serif;font-size:1.05rem;color:rgba(250,246,238,.65);line-height:1.6}
+.album-step-txt strong{color:var(--or-light);font-weight:400}
 .album-note{font-family:'EB Garamond',serif;font-style:italic;font-size:.95rem;color:rgba(250,246,238,.4);text-align:center;margin-top:1rem}
 .album-qr{text-align:center;margin-top:2rem}
 .album-qr-hint{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(250,246,238,.35);margin-top:.8rem}
@@ -838,7 +843,21 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
         Voir et ajouter des photos
       </a>
     </div>
-    <p class="album-note reveal">L'album est accessible à tous les invités — depuis votre téléphone, cliquez simplement sur le bouton ci-dessus ✦</p>
+    <div class="album-steps reveal">
+      <div class="album-step">
+        <div class="album-step-num">1</div>
+        <div class="album-step-txt"><strong>Cliquez sur le bouton</strong> ci-dessus ou scannez le QR code avec votre téléphone</div>
+      </div>
+      <div class="album-step">
+        <div class="album-step-num">2</div>
+        <div class="album-step-txt"><strong>Rejoignez l'album</strong> en cliquant sur "Rejoindre" — un compte Google suffit, c'est gratuit et rapide</div>
+      </div>
+      <div class="album-step">
+        <div class="album-step-num">3</div>
+        <div class="album-step-txt"><strong>Ajoutez vos photos</strong> directement depuis votre téléphone ou votre ordinateur — et admirez celles des autres !</div>
+      </div>
+    </div>
+    <p class="album-note reveal">Pas de compte Google ? Pas de panique — demandez à un proche de vous aider, ou envoyez vos photos directement à Andrei ou Aline ✦</p>
     <div class="album-qr reveal">
       <div id="album-qr-canvas"></div>
       <p class="album-qr-hint">Ou scannez ce QR code</p>
