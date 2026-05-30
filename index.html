@@ -159,6 +159,17 @@ section{padding:6rem 2rem}
 .rsvp-success{display:none;text-align:center;padding:3rem 1rem}
 .rsvp-success p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--ivoire);opacity:.8}
 
+/* === FAQ === */
+#faq{background:var(--ivoire);padding:5rem 2rem}
+.faq-list{max-width:700px;margin:2rem auto 0;display:flex;flex-direction:column;gap:.6rem}
+.faq-item{border:1px solid rgba(201,168,76,.25);border-radius:2px;overflow:hidden;background:var(--ivoire)}
+.faq-question{width:100%;background:transparent;border:none;padding:1.1rem 1.3rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--bordeaux);text-align:left;gap:1rem;transition:background .2s}
+.faq-question:hover{background:rgba(201,168,76,.06)}
+.faq-question span{flex:1}
+.faq-arrow{transition:transform .3s;flex-shrink:0;color:var(--or)}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;padding:0 1.3rem;font-family:'EB Garamond',serif;font-size:1.05rem;line-height:1.8;color:var(--texte-muted)}
+.faq-item.open .faq-answer{max-height:300px;padding:.2rem 1.3rem 1.2rem}
 /* === CAGNOTTE === */
 #cagnotte{background:var(--ivoire-dark);padding:5rem 2rem}
 .cagnotte-inner{max-width:700px;margin:0 auto;text-align:center}
@@ -208,6 +219,7 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
       <li><a href="#programme">Programme</a></li>
       <li><a href="#infos">Infos</a></li>
       <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#cagnotte">Cadeaux</a></li>
       <li><a href="#rsvp">RSVP</a></li>
     </ul>
@@ -415,6 +427,81 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
           <strong>Le blanc est réservé à la mariée.</strong> Toutes les autres teintes sont les bienvenues ✦
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="section-inner">
+    <p class="section-tag reveal">Questions fréquentes</p>
+    <h2 class="section-title reveal">Tout ce que vous <em>voulez savoir</em></h2>
+    <div class="divider reveal">
+      <div class="divider-line"></div>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l1.8 6.6L20 8l-6.2 1.4L12 16l-1.8-6.6L4 8l6.2-1.4z"/></svg>
+      <div class="divider-line r"></div>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>🚗 Parking & accès</span>
+          <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          Le Château de la Rocq dispose d'un grand parking gratuit sur place. Pour les personnes venant en train, la gare la plus proche est Seneffe, à environ 10 minutes en voiture. Nous vous recommandons fortement de prévoir un conducteur désigné ou une chambre sur place si vous souhaitez profiter pleinement de la soirée.
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>👗 Tenue de soirée</span>
+          <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          Une tenue de soirée est requise — robe longue ou cocktail pour les dames, costume ou smoking pour les messieurs. Toutes les couleurs sont les bienvenues, à l'exception du blanc, réservé à la mariée. N'hésitez pas à vous faire plaisir ✦
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>👶 Les enfants sont-ils les bienvenus ?</span>
+          <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          Oui, les enfants sont les bienvenus ! Merci de le préciser dans votre RSVP en indiquant leur prénom et leur âge, afin que nous puissions adapter le repas et l'organisation en conséquence.
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>📸 Photos pendant la cérémonie</span>
+          <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          Nous vous demandons de ranger vos téléphones pendant la cérémonie afin de vivre ce moment pleinement avec nous. Un photographe professionnel sera présent toute la journée. Après la cérémonie, vous serez libres de capturer autant de souvenirs que vous le souhaitez !
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>🎁 Cadeaux & liste de mariage</span>
+          <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          Nous vivons déjà ensemble et avons tout ce qu'il nous faut. Si vous souhaitez nous gâter, une contribution à notre voyage de noces nous toucherait énormément. Tous les détails se trouvent dans la section <a href="#cagnotte" style="color:var(--bordeaux)">Cadeaux</a> du site.
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>✉️ Une question ?</span>
+          <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          Pour toute question, n'hésitez pas à nous contacter directement à <a href="mailto:detournay.andrei@gmail.com" style="color:var(--bordeaux)">detournay.andrei@gmail.com</a>. Nous serons ravis de vous répondre dans les plus brefs délais.
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -883,6 +970,14 @@ window.addEventListener('load',function(){
     });
   }catch(e){}
 });
+
+/* === FAQ ACCORDÉON === */
+function toggleFaq(btn){
+  var item=btn.parentElement;
+  var isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(el){el.classList.remove('open');});
+  if(!isOpen) item.classList.add('open');
+}
 
 /* === COPIER IBAN === */
 function copyIban(){
