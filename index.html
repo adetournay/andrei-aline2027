@@ -241,6 +241,21 @@ section{padding:6rem 2rem}
 .qr-note{font-size:.9rem;color:var(--texte-muted);font-style:italic;margin-top:1.5rem;line-height:1.6}
 footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15);padding:2.5rem 2rem;text-align:center}
 /* === MUSIC PLAYER === */
+/* === MÉTÉO === */
+#meteo-widget{position:fixed;bottom:1.8rem;left:1.8rem;z-index:200;background:var(--bordeaux-deep);border:1px solid rgba(201,168,76,.35);border-radius:8px;padding:.8rem 1rem;box-shadow:0 4px 18px rgba(74,18,32,.35);min-width:220px;cursor:pointer;transition:transform .2s}
+#meteo-widget:hover{transform:scale(1.02)}
+#meteo-widget.collapsed{min-width:auto}
+.meteo-header{display:flex;align-items:center;gap:.6rem;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--or)}
+.meteo-lieu{flex:1;font-size:.55rem;color:rgba(250,246,238,.5)}
+.meteo-today{display:flex;align-items:center;gap:.8rem;margin-top:.6rem;padding-top:.6rem;border-top:1px solid rgba(201,168,76,.15)}
+.meteo-icon{font-size:1.8rem;line-height:1}
+.meteo-temp{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--ivoire);font-weight:300}
+.meteo-desc{font-family:'EB Garamond',serif;font-style:italic;font-size:.85rem;color:rgba(250,246,238,.6);line-height:1.3}
+.meteo-forecast{display:flex;gap:.5rem;margin-top:.6rem;padding-top:.6rem;border-top:1px solid rgba(201,168,76,.15)}
+.meteo-day{flex:1;text-align:center;font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(250,246,238,.5)}
+.meteo-day-icon{font-size:1rem;display:block;margin:.2rem 0}
+.meteo-day-temp{font-family:'EB Garamond',serif;font-size:.85rem;color:var(--or-light)}
+.meteo-collapsed-show{font-family:'Cinzel',serif;font-size:.55rem;color:var(--or);letter-spacing:.1em}
 #music-btn{position:fixed;bottom:1.8rem;right:1.8rem;z-index:200;width:46px;height:46px;border-radius:50%;background:var(--bordeaux);border:1px solid rgba(201,168,76,.5);box-shadow:0 4px 18px rgba(74,18,32,.35);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s}
 #music-btn:hover{background:var(--bordeaux-light);transform:scale(1.08)}
 #music-btn svg{width:18px;height:18px;fill:var(--or-light)}
@@ -803,7 +818,7 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
       <div class="divider-line r"></div>
     </div>
     <p class="jeu-intro reveal">Vous pensez les connaître ? Prouvez-le ! Votez pour chaque question et découvrez les vraies réponses le jour J ✦</p>
-    <div class="jeu-grid reveal" id="jeu-grid"></div>
+    <div class="jeu-grid" id="jeu-grid"></div>
   </div>
 </section>
 
@@ -900,6 +915,24 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
 
 <!-- Lecteur YouTube caché -->
 <div id="yt-player"></div>
+
+<!-- Widget Météo -->
+<div id="meteo-widget" onclick="toggleMeteo()">
+  <div class="meteo-header">
+    ☁️ <span>Météo · Seneffe</span>
+    <span class="meteo-lieu" id="meteo-toggle-icon">▾</span>
+  </div>
+  <div id="meteo-body">
+    <div class="meteo-today">
+      <div class="meteo-icon" id="meteo-icon">—</div>
+      <div>
+        <div class="meteo-temp"><span id="meteo-temp">—</span>°C</div>
+        <div class="meteo-desc" id="meteo-desc">Chargement…</div>
+      </div>
+    </div>
+    <div class="meteo-forecast" id="meteo-forecast"></div>
+  </div>
+</div>
 
 <!-- Bouton musique flottant -->
 <div id="music-tooltip">A Thousand Years · Christina Perri</div>
@@ -1088,6 +1121,61 @@ window.addEventListener('load',function(){
     });
   }catch(e){}
 });
+
+/* === MÉTÉO === */
+var meteoOpen=true;
+function toggleMeteo(){
+  meteoOpen=!meteoOpen;
+  document.getElementById('meteo-body').style.display=meteoOpen?'block':'none';
+  document.getElementById('meteo-toggle-icon').textContent=meteoOpen?'▾':'▸';
+}
+
+function getWeatherIcon(code){
+  if(code<=232) return '⛈️';
+  if(code<=321) return '🌦️';
+  if(code<=531) return '🌧️';
+  if(code<=622) return '❄️';
+  if(code<=781) return '🌪️';
+  if(code===800) return '☀️';
+  if(code<=802) return '⛅';
+  return '☁️';
+}
+
+function getDayName(ts){
+  var days=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
+  return days[new Date(ts*1000).getDay()];
+}
+
+function loadMeteo(){
+  fetch('https://wttr.in/Seneffe,Belgium?format=j1')
+  .then(function(r){return r.json();})
+  .then(function(d){
+    var cur=d.current_condition[0];
+    var temp=cur.temp_C;
+    var desc=cur.lang_fr?cur.lang_fr[0].value:cur.weatherDesc[0].value;
+    var code=parseInt(cur.weatherCode);
+    document.getElementById('meteo-temp').textContent=temp;
+    document.getElementById('meteo-desc').textContent=desc;
+    document.getElementById('meteo-icon').textContent=getWeatherIcon(code);
+
+    var days=d.weather.slice(0,3);
+    var jours=['Aujourd\'hui','Demain','Après-demain'];
+    document.getElementById('meteo-forecast').innerHTML=days.map(function(day,i){
+      var maxT=day.maxtempC, minT=day.mintempC;
+      var dayCode=parseInt(day.hourly[4].weatherCode);
+      return '<div class="meteo-day">'+
+        '<div>'+jours[i]+'</div>'+
+        '<span class="meteo-day-icon">'+getWeatherIcon(dayCode)+'</span>'+
+        '<div class="meteo-day-temp">'+maxT+'°/'+minT+'°</div>'+
+      '</div>';
+    }).join('');
+  })
+  .catch(function(){
+    document.getElementById('meteo-desc').textContent='Indisponible';
+  });
+}
+
+window.addEventListener('load',function(){loadMeteo();});
 
 /* === JEU VOTES === */
 var AT_VOTES='tblOoxlXetJlsMqvV';
