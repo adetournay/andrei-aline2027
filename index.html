@@ -19,10 +19,18 @@ body{background:var(--ivoire);color:var(--texte);font-family:'EB Garamond',serif
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,246,238,.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(201,168,76,.25);padding:0 2rem}
 .nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:58px}
 .nav-logo{font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:.2em;color:var(--bordeaux)}
-.nav-links{display:flex;gap:1.8rem;list-style:none}
-.nav-links a{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--texte-muted);text-decoration:none;transition:color .3s}
-.nav-links a:hover{color:var(--or)}
-@media(max-width:600px){.nav-links{gap:1rem}.nav-links a{font-size:.55rem;letter-spacing:.1em}}
+.nav-links{display:flex;gap:1.4rem;list-style:none}
+.nav-links a{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--texte-muted);text-decoration:none;transition:color .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--or)}
+.nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.3rem}
+.nav-burger span{display:block;width:22px;height:1.5px;background:var(--bordeaux);transition:all .3s}
+@media(max-width:780px){
+  .nav-links{display:none;position:fixed;top:58px;left:0;right:0;background:rgba(250,246,238,.98);flex-direction:column;align-items:center;gap:0;padding:1rem 0;border-bottom:1px solid rgba(201,168,76,.2);box-shadow:0 8px 24px rgba(74,18,32,.1)}
+  .nav-links.open{display:flex}
+  .nav-links li{width:100%;text-align:center}
+  .nav-links a{display:block;padding:.8rem 2rem;font-size:.65rem}
+  .nav-burger{display:flex}
+}
 #hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;padding:5rem 2rem 3rem;overflow:hidden;background:var(--bordeaux-deep)}
 .hero-bg{position:absolute;inset:0;background-image:url('chateau.jpg');background-size:cover;background-position:center;opacity:.18;filter:grayscale(30%)}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,var(--bordeaux-deep) 0%,transparent 30%,transparent 70%,var(--bordeaux-deep) 100%)}
@@ -307,7 +315,7 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
 <nav>
   <div class="nav-inner">
     <span class="nav-logo">A & A · 2027</span>
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-links">
       <li><a href="#histoire">Notre histoire</a></li>
       <li><a href="#programme">Programme</a></li>
       <li><a href="#infos">Infos</a></li>
@@ -319,6 +327,9 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
       <li><a href="#cagnotte">Cadeaux</a></li>
       <li><a href="#rsvp">RSVP</a></li>
     </ul>
+    <button class="nav-burger" id="nav-burger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -1170,13 +1181,34 @@ window.addEventListener('load',function(){
   }catch(e){}
 });
 
-/* === MÉTÉO === */
-var meteoOpen=true;
-function toggleMeteo(){
-  meteoOpen=!meteoOpen;
-  document.getElementById('meteo-body').style.display=meteoOpen?'block':'none';
-  document.getElementById('meteo-toggle-icon').textContent=meteoOpen?'▾':'▸';
+/* === MENU HAMBURGER === */
+function toggleNav(){
+  var links=document.getElementById('nav-links');
+  links.classList.toggle('open');
 }
+document.addEventListener('click',function(e){
+  var nav=document.querySelector('nav');
+  if(!nav.contains(e.target)) document.getElementById('nav-links').classList.remove('open');
+});
+document.querySelectorAll('.nav-links a').forEach(function(a){
+  a.addEventListener('click',function(){document.getElementById('nav-links').classList.remove('open');});
+});
+
+/* === LIEN ACTIF AU SCROLL === */
+var navSections=['histoire','programme','infos','galerie','album','jeu','playlist','faq','cagnotte','rsvp'];
+window.addEventListener('scroll',function(){
+  var scrollY=window.scrollY+100;
+  var current='';
+  navSections.forEach(function(id){
+    var el=document.getElementById(id);
+    if(el&&el.offsetTop<=scrollY) current=id;
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.classList.toggle('active',a.getAttribute('href')==='#'+current);
+  });
+},{passive:true});
+
+/* === MÉTÉO === */
 
 function getWeatherIcon(code){
   if(code<=232) return '⛈️';
