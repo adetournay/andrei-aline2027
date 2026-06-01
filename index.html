@@ -173,7 +173,10 @@ section{padding:6rem 2rem}
 .btn-submit::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.2),transparent);opacity:0;transition:opacity .3s}
 .btn-submit:hover::after{opacity:1}
 .btn-submit:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(107,30,46,.4)}
-.rsvp-note{font-size:.9rem;font-style:italic;color:rgba(250,246,238,.4);text-align:center;margin-top:.5rem}
+.rsvp-deadline{display:flex;align-items:center;justify-content:center;gap:.8rem;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.4);border-radius:3px;padding:1rem 1.5rem;margin-top:1.2rem;text-align:center}
+.rsvp-deadline-icon{font-size:1.3rem}
+.rsvp-deadline-text{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or-light);line-height:1.7}
+.rsvp-deadline-date{display:block;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--or-light);letter-spacing:.05em;margin-top:.2rem}
 .rsvp-success{display:none;text-align:center;padding:3rem 1rem}
 .rsvp-success p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--ivoire);opacity:.8}
 
@@ -850,7 +853,13 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
       </div><!-- /fields-present -->
 
       <button type="button" class="btn-submit" onclick="submitRSVP()">Envoyer ma réponse</button>
-      <p class="rsvp-note">Merci de répondre avant le 14 février 2027</p>
+      <div class="rsvp-deadline">
+        <span class="rsvp-deadline-icon">📅</span>
+        <div class="rsvp-deadline-text">
+          Merci de confirmer votre présence avant le
+          <span class="rsvp-deadline-date">14 février 2027</span>
+        </div>
+      </div>
     </div>
 
     <div class="rsvp-success" id="rsvp-success">
