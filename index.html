@@ -1415,6 +1415,53 @@ function loadMeteo(){
 window.addEventListener('load',function(){loadMeteo();});
 
 /* === JEU VOTES === */
+/* === LIVRE D'OR === */
+var AT_LD='tblZMh2UOtAQ2IcxP';
+var AT_LD_URL='https://api.airtable.com/v0/'+AT_BASE+'/'+AT_LD;
+
+function loadLivreDor(){
+  fetch(AT_LD_URL+'?sort[0][field]=Prénom&sort[0][direction]=asc',{headers:{Authorization:'Bearer '+AT_TOKEN}})
+  .then(function(r){return r.json();})
+  .then(function(d){
+    var container=document.getElementById('livredor-messages');
+    if(!container) return;
+    if(!d.records||d.records.length===0){
+      container.innerHTML='<p class="livredor-empty">Soyez le premier à laisser un message !</p>';
+      return;
+    }
+    container.innerHTML=d.records.map(function(r){
+      var f=r.fields;
+      return '<div class="livredor-msg">'+
+        '<div class="livredor-msg-prenom">'+(f['Prénom']||'Anonyme')+'</div>'+
+        '<div class="livredor-msg-texte">'+(f['Message']||'')+'</div>'+
+      '</div>';
+    }).join('');
+  }).catch(function(){});
+}
+
+function submitLivreDor(){
+  var prenom=document.getElementById('ld-prenom').value.trim();
+  var message=document.getElementById('ld-message').value.trim();
+  if(!prenom||!message){alert('Merci de remplir votre prénom et votre message.');return;}
+  var btn=document.getElementById('ld-btn');
+  btn.textContent='Envoi…';btn.disabled=true;
+  fetch(AT_LD_URL,{
+    method:'POST',
+    headers:{Authorization:'Bearer '+AT_TOKEN,'Content-Type':'application/json'},
+    body:JSON.stringify({fields:{'Prénom':prenom,'Message':message}})
+  }).then(function(){
+    document.getElementById('ld-prenom').value='';
+    document.getElementById('ld-message').value='';
+    btn.textContent='Laisser un message ✦';btn.disabled=false;
+    loadLivreDor();
+  }).catch(function(){
+    alert('Erreur lors de l\'envoi, réessayez.');
+    btn.textContent='Laisser un message ✦';btn.disabled=false;
+  });
+}
+
+window.addEventListener('load',function(){loadLivreDor();});
+
 var AT_VOTES='tblOoxlXetJlsMqvV';
 var AT_VOTES_URL='https://api.airtable.com/v0/'+AT_BASE+'/'+AT_VOTES;
 
@@ -1504,7 +1551,7 @@ window.addEventListener('load',function(){buildJeu();});
 
 /* === PLAYLIST AIRTABLE === */
 var AT_TOKEN=atob('cGF0bDBGeUZXVDlFNVFYTzMuYWY1ZjYwODA5MWVkNDNlZGMwY2E1NDI1MTNkNjY4MWJlNzM5MjM1MzI1NjVkNDZlNTIzYjUwOWZkZmEyOGUxYQ==');
-var AT_BASE='appXl7VpRfQvqT1rK';
+var AT_BASE='appXI7VpRfQvqT1rK';
 var AT_TABLE='tblMoLMPd2hPyZ8gH';
 var AT_URL='https://api.airtable.com/v0/'+AT_BASE+'/'+AT_TABLE;
 
