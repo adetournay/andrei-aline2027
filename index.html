@@ -4,8 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Andrei & Aline · 17 Avril 2027</title>
-<meta name="description" content="Andrei et Aline vous invitent à célébrer leur mariage le 17 avril 2027 au Château de la Rocq, Seneffe, Belgique.">
+<meta name="description" content="Rejoignez Andrei et Aline pour célébrer leur mariage le 17 avril 2027 au Château de la Rocq, Seneffe, Belgique.">
+<!-- Open Graph / WhatsApp / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://andrei-aline2027.be">
+<meta property="og:title" content="Andrei & Aline · 17 Avril 2027">
+<meta property="og:description" content="Rejoignez-nous pour célébrer notre mariage au Château de la Rocq, Seneffe — 17 avril 2027">
+<meta property="og:image" content="https://andrei-aline2027.be/couple.jpg">
+<meta property="og:locale" content="fr_BE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://andrei-aline2027.be/couple.jpg">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%236B1E2E'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='28' fill='%23C9A84C'%3EA%26A%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -272,6 +283,35 @@ section+section::before{content:'';position:absolute;top:0;left:50%;transform:tr
 .qr-url{font-family:'EB Garamond',serif;font-style:italic;font-size:.95rem;color:var(--or);margin-top:.3rem}
 .qr-note{font-size:.9rem;color:var(--texte-muted);font-style:italic;margin-top:1.5rem;line-height:1.6}
 footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15);padding:2.5rem 2rem;text-align:center}
+/* === PRELOADER === */
+#preloader{position:fixed;inset:0;z-index:9999;background:var(--bordeaux-deep);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;transition:opacity .8s ease,visibility .8s ease}
+#preloader.hidden{opacity:0;visibility:hidden}
+.preloader-names{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,8vw,4rem);font-style:italic;font-weight:300;color:var(--ivoire);letter-spacing:.1em}
+.preloader-amp{color:var(--or);font-style:italic}
+.preloader-bar{width:60px;height:1px;background:rgba(201,168,76,.3);position:relative;overflow:hidden;border-radius:1px}
+.preloader-bar::after{content:'';position:absolute;inset:0;background:var(--or);animation:preloaderFill 1.2s ease forwards}
+@keyframes preloaderFill{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+/* === SCROLL TO TOP === */
+#scroll-top{position:fixed;bottom:6.5rem;right:1.8rem;z-index:200;width:38px;height:38px;border-radius:50%;background:rgba(74,18,32,.7);border:1px solid rgba(201,168,76,.3);color:var(--or-light);cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s,transform .2s;backdrop-filter:blur(4px)}
+#scroll-top.visible{opacity:1;pointer-events:auto}
+#scroll-top:hover{transform:translateY(-2px);background:var(--bordeaux)}
+/* === WHATSAPP SHARE === */
+#whatsapp-share{position:fixed;bottom:10.5rem;right:1.8rem;z-index:200;width:38px;height:38px;border-radius:50%;background:#25D366;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.25);transition:transform .2s}
+#whatsapp-share:hover{transform:scale(1.1)}
+/* === LIVRE D'OR === */
+#livre-dor{background:var(--ivoire);padding:5rem 2rem}
+.livredor-intro{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--texte-muted);text-align:center;margin:1.5rem 0 2rem;line-height:1.8}
+.livredor-form{max-width:600px;margin:0 auto 2.5rem;background:var(--ivoire-dark);border:1px solid rgba(201,168,76,.25);border-radius:4px;padding:2rem}
+.livredor-messages{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:1.2rem}
+.livredor-msg{background:var(--ivoire-dark);border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:1.3rem 1.5rem;position:relative}
+.livredor-msg::before{content:'✦';position:absolute;top:1rem;right:1.2rem;color:var(--or);opacity:.3;font-size:.7rem}
+.livredor-msg-prenom{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bordeaux);margin-bottom:.5rem}
+.livredor-msg-texte{font-family:'EB Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--texte);line-height:1.7}
+.livredor-empty{font-family:'EB Garamond',serif;font-style:italic;color:var(--texte-muted);text-align:center;padding:2rem;opacity:.6}
+/* === BOUTON CALENDRIER === */
+.cal-btns{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.5rem;justify-content:center}
+.cal-btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;padding:.65rem 1.2rem;border-radius:2px;text-decoration:none;transition:all .3s;border:1px solid rgba(201,168,76,.35);color:var(--or);background:transparent}
+.cal-btn:hover{background:rgba(201,168,76,.1);border-color:var(--or)}
 /* === MUSIC PLAYER === */
 /* === MÉTÉO === */
 #music-btn{position:fixed;bottom:1.8rem;right:1.8rem;z-index:200;width:46px;height:46px;border-radius:50%;background:var(--bordeaux);border:1px solid rgba(201,168,76,.5);box-shadow:0 4px 18px rgba(74,18,32,.35);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s}
@@ -289,6 +329,20 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
 </style>
 </head>
 <body>
+
+<!-- Preloader -->
+<div id="preloader">
+  <div class="preloader-names">Andrei <span class="preloader-amp">&</span> Aline</div>
+  <div class="preloader-bar"></div>
+</div>
+
+<!-- Boutons flottants -->
+<a id="whatsapp-share" href="https://wa.me/?text=Andrei%20%26%20Aline%20vous%20invitent%20à%20leur%20mariage%20le%2017%20avril%202027%20%F0%9F%92%8D%20https%3A%2F%2Fandrei-aline2027.be" target="_blank" rel="noopener" aria-label="Partager sur WhatsApp">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.12 1.526 5.855L0 24l6.304-1.508A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.044-1.38l-.36-.214-3.742.895.946-3.638-.235-.374A9.866 9.866 0 0 1 2.106 12C2.106 6.533 6.533 2.106 12 2.106c5.468 0 9.894 4.427 9.894 9.894 0 5.468-4.426 9.894-9.894 9.894z"/></svg>
+</a>
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
 
 <!-- Protection par mot de passe -->
 <div id="pwd-screen" style="display:none;position:fixed;inset:0;z-index:9999;background:var(--bordeaux-deep);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem">
@@ -330,6 +384,7 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
       <li><a href="#jeu">Jeu</a></li>
       <li><a href="#playlist">Playlist</a></li>
       <li><a href="#faq">FAQ</a></li>
+      <li><a href="#livre-dor">Livre d'or</a></li>
       <li><a href="#cagnotte">Cadeaux</a></li>
       <li><a href="#rsvp">RSVP</a></li>
     </ul>
@@ -356,6 +411,7 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
     </div>
     <p class="hero-date">17 Avril 2027</p>
     <p class="hero-location">Château de la Rocq · Seneffe, Belgique</p>
+    <p id="countdown-phrase" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:rgba(250,246,238,.5);margin-top:1.5rem;letter-spacing:.03em"></p>
     <div class="countdown" id="countdown">
       <div class="cdown-item"><div class="cdown-num" id="cd-j">—</div><div class="cdown-label">Jours</div></div>
       <div class="cdown-item"><div class="cdown-num" id="cd-h">—</div><div class="cdown-label">Heures</div></div>
@@ -474,6 +530,16 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
         <div class="tl-title" style="color:rgba(250,246,238,.6);font-size:1.1rem">Brunch du lendemain</div>
         <div class="tl-desc">Pour les résidents du château · Sur réservation</div>
       </div>
+    </div>
+    <div class="cal-btns">
+      <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mariage+Andrei+%26+Aline&dates=20270417T130000Z/20270418T000000Z&details=Mariage+d%27Andrei+et+Aline+au+Ch%C3%A2teau+de+la+Rocq&location=Rue+Omer+Lion%2C+7181+Seneffe%2C+Belgique" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Google Calendar
+      </a>
+      <a class="cal-btn" href="javascript:void(0)" onclick="downloadICS()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Apple Calendar
+      </a>
     </div>
   </div>
 </section>
@@ -966,6 +1032,29 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
   </div>
 </section>
 
+<section id="livre-dor">
+  <div class="section-inner">
+    <p class="section-tag reveal">Vos mots</p>
+    <h2 class="section-title reveal">Livre <em>d'or</em></h2>
+    <div class="divider reveal">
+      <div class="divider-line"></div>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.7C5.4 13.6 2 9 2 6a10 10 0 0 1 20 0c0 3-3.4 7.6-10 15.7z"/></svg>
+      <div class="divider-line r"></div>
+    </div>
+    <p class="livredor-intro reveal">Un mot, un vœu, une pensée… Laissez-nous un message qui restera gravé dans notre mémoire bien après le 17 avril 2027 ✦</p>
+    <div class="livredor-form reveal">
+      <div class="rsvp-row">
+        <div class="field-group"><label>Votre prénom</label><input type="text" id="ld-prenom" placeholder="Votre prénom"></div>
+      </div>
+      <div class="field-group" style="margin-top:1rem"><label>Votre message</label><textarea id="ld-message" rows="4" placeholder="Un vœu, une anecdote, un mot du cœur…" style="resize:vertical"></textarea></div>
+      <button class="btn-submit" onclick="submitLivreDor()" id="ld-btn" style="margin-top:1rem">Laisser un message ✦</button>
+    </div>
+    <div class="livredor-messages" id="livredor-messages">
+      <p class="livredor-empty">Soyez le premier à laisser un message !</p>
+    </div>
+  </div>
+</section>
+
 <section id="cagnotte">
   <div class="cagnotte-inner">
     <p class="section-tag reveal">Liste de mariage</p>
@@ -1028,6 +1117,30 @@ footer{background:var(--bordeaux-deep);border-top:1px solid rgba(201,168,76,.15)
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
+/* === PRELOADER === */
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    var p=document.getElementById('preloader');
+    if(p) p.classList.add('hidden');
+  },1400);
+});
+
+/* === SCROLL TO TOP === */
+window.addEventListener('scroll',function(){
+  var btn=document.getElementById('scroll-top');
+  if(btn) btn.classList.toggle('visible',window.scrollY>400);
+},{passive:true});
+
+/* === ICS CALENDRIER === */
+function downloadICS(){
+  var ics='BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:20270417T130000Z\nDTEND:20270418T000000Z\nSUMMARY:Mariage Andrei & Aline\nLOCATION:Rue Omer Lion\\, 7181 Seneffe\\, Belgique\nDESCRIPTION:Mariage d\'Andrei et Aline au Château de la Rocq\nEND:VEVENT\nEND:VCALENDAR';
+  var blob=new Blob([ics],{type:'text/calendar'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='mariage-andrei-aline.ics';
+  a.click();
+}
+
 /* === CONFIG === */
 var QR_CODE_URL = 'https://andrei-aline2027.be';
 var DATE_MARIAGE = '2027-04-17T15:00:00';
@@ -1035,12 +1148,21 @@ var DATE_MARIAGE = '2027-04-17T15:00:00';
 /* === COMPTE À REBOURS === */
 function updateCountdown(){
   var target=new Date(DATE_MARIAGE),now=new Date(),diff=target-now;
-  if(diff<=0){document.getElementById('countdown').innerHTML='<p style="color:var(--or-light);font-family:Cormorant Garamond,serif;font-style:italic;font-size:1.4rem">Le grand jour est arrivé !</p>';return}
+  if(diff<=0){document.getElementById('countdown').innerHTML='<p style="color:var(--or-light);font-family:Cormorant Garamond,serif;font-style:italic;font-size:1.4rem">Le grand jour est arrivé ! 🎉</p>';return}
   var j=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
   document.getElementById('cd-j').textContent=String(j).padStart(3,'0');
   document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
   document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
   document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
+  var phrase='';
+  if(j>365) phrase='Le grand jour approche… encore '+j+' jours ✦';
+  else if(j>30) phrase='Plus que '+j+' jours avant de nous retrouver !';
+  else if(j>7) phrase='Bientôt ! Seulement '+j+' jours restants 🎉';
+  else if(j>1) phrase='Dans '+j+' jours seulement — préparez vos plus belles tenues !';
+  else if(j===1) phrase="C'est demain ! On n'y croit presque plus… 💍";
+  else phrase="C'est aujourd'hui ! À tout à l'heure au château ! 🎊";
+  var el=document.getElementById('countdown-phrase');
+  if(el) el.textContent=phrase;
 }
 updateCountdown();setInterval(updateCountdown,1000);
 
